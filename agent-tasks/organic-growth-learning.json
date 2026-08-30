@@ -1,0 +1,46 @@
+{
+  "context": {
+    "growth_plan_ref": "organic-growth-plan.json",
+    "organic_discovery_ref": "organic-discovery.json",
+    "required_live_sources": [
+      "consented product analytics events",
+      "product request, site-visit, and quote-ready records",
+      "attributed quote and won-work records from an operator-approved integration or manual reconciliation",
+      "Google Search Console and Bing Webmaster Tools after ownership is verified",
+      "crawler and server logs that exclude secrets and private content"
+    ],
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "organic_growth_learning_agent",
+    "allowed_scope": [
+      "organic-growth-plan.json",
+      "organic-growth-evidence/**",
+      "organic-growth-experiments/**",
+      "frontend public marketing pages through a reviewable product source change"
+    ],
+    "definition_of_done": [
+      "All used metrics cite retained source evidence and an observation window.",
+      "The diagnosis separates crawl, indexing, relevance, click, conversion, and commercial-value problems.",
+      "The proposed experiment states its customer hypothesis, target page, change, primary conversion metric, guardrails, and review date.",
+      "A new page is proposed only for a distinct unmet intent with evidence; otherwise improve or retire existing content.",
+      "The output is reviewable and is not automatically published."
+    ],
+    "dependencies": [
+      "organic_discovery_review_agent",
+      "production live-evidence collection"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "automatic production publication",
+      "fabricated backlinks, reviews, citations, mentions, customers, revenue, or outcomes",
+      "mass-generated pages or keyword permutations",
+      "private customer data or authenticated content",
+      "raw provider credentials"
+    ],
+    "objective": "Use retained search, analytics, crawl, AI-referral, conversion, and commercial evidence to propose the smallest high-confidence organic growth experiment.",
+    "task_id": "learn-quote-intake-demo-organic-growth",
+    "title": "Learn from QuoteRivet organic discovery evidence"
+  }
+}

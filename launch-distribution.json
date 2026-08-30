@@ -1,0 +1,80 @@
+{
+  "agent_id": "launch_distribution_agent",
+  "product_id": "quote-intake-demo",
+  "schema_version": "product_factory.launch_distribution.v1",
+  "search": {
+    "canonical_url": "",
+    "description": "Capture estimate requests, assign an estimator, collect site photos and scope notes, and record a quote-ready decision without replacing dispatch.",
+    "intent_phrases": [
+      "QuoteRivet",
+      "estimate request intake for contractors",
+      "quote-ready checklist",
+      "site-visit handoff",
+      "contractor quote intake software",
+      "estimator assignment workflow",
+      "residential service request photos and scope notes"
+    ],
+    "required_routes": [
+      "/sitemap.xml",
+      "/robots.txt"
+    ],
+    "structured_data_types": [
+      "Organization",
+      "WebSite",
+      "WebPage"
+    ],
+    "title": "QuoteRivet | Estimate Request Intake for Contractors"
+  },
+  "social": {
+    "copy_ref": "launch-assets/social-copy.json",
+    "images": [
+      {
+        "height": 630,
+        "id": "landscape",
+        "output": "frontend/public/social-preview.png",
+        "source": "frontend/public/social-preview.svg",
+        "uses": [
+          "Open Graph",
+          "LinkedIn",
+          "X"
+        ],
+        "width": 1200
+      },
+      {
+        "height": 1200,
+        "id": "square",
+        "output": "frontend/public/social-square.png",
+        "source": "frontend/public/social-square.svg",
+        "uses": [
+          "Instagram feed",
+          "Facebook feed"
+        ],
+        "width": 1200
+      },
+      {
+        "height": 1920,
+        "id": "story",
+        "output": "frontend/public/social-story.png",
+        "source": "frontend/public/social-story.svg",
+        "uses": [
+          "Instagram story",
+          "vertical social"
+        ],
+        "width": 1080
+      }
+    ],
+    "open_graph_type": "website",
+    "twitter_card": "summary_large_image"
+  },
+  "status": "generated_pending_live_preview_proof",
+  "verification": {
+    "command": "python3 scripts/verify-launch-distribution.py",
+    "live_requirements": [
+      "canonical URL resolves over HTTPS",
+      "social image URLs return image/png",
+      "rendered page exposes canonical, Open Graph, X, robots, and truthful page-specific JSON-LD tags",
+      "sitemap.xml and robots.txt return HTTP 200"
+    ],
+    "report_ref": "launch-distribution-verification.json"
+  }
+}

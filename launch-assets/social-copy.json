@@ -1,0 +1,30 @@
+{
+  "claim_policy": "Use only product-spec facts and retained evidence; never invent traction, rankings, revenue, or outcomes.",
+  "hashtags": [
+    "#QuoteRivet",
+    "#EstimateRequests",
+    "#QuoteReady",
+    "#ServiceContractors",
+    "#EstimatorWorkflow",
+    "#FieldService"
+  ],
+  "platforms": {
+    "instagram": {
+      "caption": "An estimate request can start as a call, text, email, or web form. QuoteRivet keeps the source, site details, photos, scope notes, estimator assignment, and quote-ready decision in one request package. It is a focused intake companion, not a replacement for accounting or dispatch.\n\n${PRODUCT_PUBLIC_URL}",
+      "feed_image": "frontend/public/social-square.png",
+      "story_image": "frontend/public/social-story.png"
+    },
+    "linkedin": {
+      "caption": "Estimate requests arrive through calls, texts, email, and web forms. QuoteRivet gives an office coordinator or owner one review path to qualify the work, assign an estimator, gather site details, photos, and scope notes, then record an explicit quote-ready decision. Accounting, dispatch, issued quotes, invoices, and payments stay in their current systems. ${PRODUCT_PUBLIC_URL}",
+      "image": "frontend/public/social-preview.png"
+    },
+    "x": {
+      "caption": "Calls, texts, email, and web forms can scatter estimate details. QuoteRivet keeps request facts, estimator assignment, site photos, scope notes, and the quote-ready decision in one package. It works beside accounting and dispatch. ${PRODUCT_PUBLIC_URL}",
+      "character_limit": 280,
+      "image": "frontend/public/social-preview.png"
+    }
+  },
+  "product_id": "quote-intake-demo",
+  "schema_version": "product_factory.social_copy.v1",
+  "url_token": "${PRODUCT_PUBLIC_URL}"
+}

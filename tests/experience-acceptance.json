@@ -1,0 +1,376 @@
+{
+  "journeys": [
+    {
+      "actor_ref": "office_coordinator",
+      "journey_id": "request_capture_and_qualification",
+      "objective": "Capture or correct a request, retain its source, and record the accountable qualification path.",
+      "steps": [
+        {
+          "action": "Send request",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_service_request_intake_and_qualification_requester_submits_request_v1",
+          "expected_evidence": "service_request.created.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "Send corrections",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_service_request_intake_and_qualification_requester_corrects_request_v1",
+          "expected_evidence": "service_request.corrected.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "Add requested photos or measurements",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_request_evidence_control_submit_evidence_version_v1",
+          "expected_evidence": "request_evidence.submitted.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "Choose this window",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_site_visit_and_scope_capture_requester_accepts_visit_window_v1",
+          "expected_evidence": "site_visit.requester_responded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "None of these work",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_site_visit_and_scope_capture_requester_declines_visit_windows_v1",
+          "expected_evidence": "site_visit.requester_responded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "Capture request",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_captures_request_v1",
+          "expected_evidence": "service_request.created.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests"
+        },
+        {
+          "action": "Ask for missing details",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_marks_clarification_required_v1",
+          "expected_evidence": "qualification_decision.recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests"
+        },
+        {
+          "action": "Mark supported",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+          "expected_evidence": "qualification_decision.recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests"
+        },
+        {
+          "action": "Send to owner review",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_routes_owner_review_v1",
+          "expected_evidence": "qualification_decision.recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests"
+        },
+        {
+          "action": "Mark supported",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+          "expected_evidence": "qualification_decision.recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests/:service_request_id"
+        },
+        {
+          "action": "Set priority",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_qualified_request_assignment_prioritize_supported_request_v1",
+          "expected_evidence": "estimator_assignment.prioritized.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests/:service_request_id"
+        },
+        {
+          "action": "Review evidence",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_request_evidence_control_estimator_starts_evidence_review_v1",
+          "expected_evidence": "request_evidence.review_started.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests/:service_request_id"
+        },
+        {
+          "action": "Open exception",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_operational_exception_resolution_open_operational_exception_v1",
+          "expected_evidence": "operational_exception.opened.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests/:service_request_id"
+        }
+      ]
+    },
+    {
+      "actor_ref": "office_coordinator",
+      "journey_id": "supported_request_assignment",
+      "objective": "Prioritize supported work, assign an eligible estimator, and retain acknowledgement or return evidence.",
+      "steps": [
+        {
+          "action": "Set priority",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_qualified_request_assignment_prioritize_supported_request_v1",
+          "expected_evidence": "estimator_assignment.prioritized.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        },
+        {
+          "action": "Assign estimator",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_qualified_request_assignment_assign_eligible_estimator_v1",
+          "expected_evidence": "estimator_assignment.assigned.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        },
+        {
+          "action": "Accept assignment",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_qualified_request_assignment_estimator_acknowledges_assignment_v1",
+          "expected_evidence": "estimator_assignment.acknowledged.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        },
+        {
+          "action": "Return with reason",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_qualified_request_assignment_estimator_returns_assignment_v1",
+          "expected_evidence": "estimator_assignment.returned.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        },
+        {
+          "action": "Choose another estimator",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_qualified_request_assignment_coordinator_reassigns_returned_request_v1",
+          "expected_evidence": "estimator_assignment.reassigned.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        }
+      ]
+    },
+    {
+      "actor_ref": "estimator",
+      "journey_id": "site_visit_scope_capture",
+      "objective": "Coordinate a site visit and retain the attributable field record, access outcome, and scope limits.",
+      "steps": [
+        {
+          "action": "Offer visit windows",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_site_visit_and_scope_capture_offer_visit_windows_v1",
+          "expected_evidence": "site_visit.windows_offered.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Confirm visit",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_site_visit_and_scope_capture_coordinator_confirms_visit_v1",
+          "expected_evidence": "site_visit.confirmed.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Start field record",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_site_visit_and_scope_capture_estimator_starts_visit_v1",
+          "expected_evidence": "site_visit.started.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Complete field record",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_site_visit_and_scope_capture_estimator_completes_field_record_v1",
+          "expected_evidence": "site_visit.completed.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Send to readiness review",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_site_visit_and_scope_capture_estimator_routes_complete_visit_v1",
+          "expected_evidence": "site_visit.routed_to_readiness.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Record no access",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_site_visit_and_scope_capture_estimator_records_no_access_v1",
+          "expected_evidence": "site_visit.no_access.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        }
+      ]
+    },
+    {
+      "actor_ref": "estimator",
+      "journey_id": "readiness_handoff_and_exception",
+      "objective": "Record the current readiness decision, transfer its exact package, and resolve any owner-authority blocker without erasing history.",
+      "steps": [
+        {
+          "action": "Start readiness review",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_starts_readiness_review_v1",
+          "expected_evidence": "quote_readiness.review_started.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Record quote-ready",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_records_quote_ready_v1",
+          "expected_evidence": "quote_readiness.quote_ready_recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Record not ready",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_records_not_ready_v1",
+          "expected_evidence": "quote_readiness.not_ready_recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Review corrected package",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_restarts_corrected_review_v1",
+          "expected_evidence": "quote_readiness.review_started.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Invalidate decision",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_invalidates_ready_decision_v1",
+          "expected_evidence": "quote_readiness.invalidated.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Assemble package",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_ready_handoff_estimator_assembles_handoff_v1",
+          "expected_evidence": "quote_ready_handoff.assembled.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Transfer package",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_ready_handoff_estimator_transfers_handoff_v1",
+          "expected_evidence": "quote_ready_handoff.transferred.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Record receipt",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_quote_ready_handoff_recipient_acknowledgement_recorded_v1",
+          "expected_evidence": "quote_ready_handoff.acknowledged.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Record rejection",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_quote_ready_handoff_recipient_rejection_recorded_v1",
+          "expected_evidence": "quote_ready_handoff.rejected.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Record access problem",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_quote_ready_handoff_recipient_access_failure_recorded_v1",
+          "expected_evidence": "quote_ready_handoff.access_failed.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Correct recipient access",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_quote_ready_handoff_coordinator_corrects_recipient_access_v1",
+          "expected_evidence": "quote_ready_handoff.access_corrected.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Open exception",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_operational_exception_resolution_open_operational_exception_v1",
+          "expected_evidence": "operational_exception.opened.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        },
+        {
+          "action": "Escalate to owner",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_operational_exception_resolution_escalate_operational_exception_v1",
+          "expected_evidence": "operational_exception.escalated.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        },
+        {
+          "action": "Record owner decision",
+          "actor_ref": "owner_manager",
+          "command_ref": "cmd_operational_exception_resolution_owner_decides_exception_v1",
+          "expected_evidence": "operational_exception.decided.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        },
+        {
+          "action": "Close resolved exception",
+          "actor_ref": "owner_manager",
+          "command_ref": "cmd_operational_exception_resolution_owner_closes_resolved_exception_v1",
+          "expected_evidence": "operational_exception.closed.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        },
+        {
+          "action": "Reopen exception",
+          "actor_ref": "owner_manager",
+          "command_ref": "cmd_operational_exception_resolution_owner_reopens_exception_v1",
+          "expected_evidence": "operational_exception.reopened.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        }
+      ]
+    }
+  ],
+  "primary_task": {
+    "actor_ref": "office_coordinator",
+    "objective": "Open one incoming estimate request, complete its minimum facts, and record the accountable next step without losing its source or requester-visible history.",
+    "success_signal": "The request spine shows a retained source, complete minimum details, a current state, one accountable person, and one permission-valid next move backed by an executable command ref."
+  },
+  "rejection_checks": [
+    "primary evidence or decision object is present in the first viewport",
+    "route heading changes do not reuse an incompatible entity collection",
+    "every mutation has a command or declared adapter binding",
+    "permission denial is enforced by the server and explained by the client",
+    "reload preserves the durable identifier and completed decision",
+    "generic fallback workspace is absent from the completed experience",
+    "only one focused mode exposes its tools at a time",
+    "advanced controls are hidden by default behind the declared disclosure",
+    "the primary object remains available on desktop and mobile",
+    "each mode exposes no more than one primary action"
+  ],
+  "required_panel_markers": [
+    "data-experience-panel=\"request_spine_panel\"",
+    "data-experience-panel=\"evidence_rail_panel\"",
+    "data-experience-panel=\"decision_seam_panel\"",
+    "data-experience-panel=\"next_move_dock_panel\""
+  ],
+  "schema_version": "product_factory.experience_acceptance.v1"
+}

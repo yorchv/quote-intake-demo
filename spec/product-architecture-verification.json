@@ -1,0 +1,248 @@
+{
+  "architecture_ref": "artifacts/architecture_quote-intake-demo_2ef739047aad/product-architecture/architecture.json",
+  "architecture_sha256": "1164f1bb6c2870c90f9f7ea49a87c942de833c0d58ae24ef37d4aa72723f54da",
+  "checks": [
+    {
+      "detail": "required product_architecture.status must be verified",
+      "name": "architecture ref status is verified",
+      "passed": true
+    },
+    {
+      "detail": "architecture_sha256 must match immutable architecture source",
+      "name": "architecture digest matches spec",
+      "passed": true
+    },
+    {
+      "detail": "Missing common SOP library: config/common-sop-library.json",
+      "name": "common SOP library exists",
+      "passed": true
+    },
+    {
+      "detail": "schema_version must be product_factory.product_architecture.v1",
+      "name": "architecture schema version is supported",
+      "passed": true
+    },
+    {
+      "detail": "product_id is required",
+      "name": "product id is present",
+      "passed": true
+    },
+    {
+      "detail": "architecture product_id must match spec product_id",
+      "name": "architecture matches product spec",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "market positioning research is complete",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "organic discovery strategy is independently verified",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "customer-facing naming research is complete",
+      "passed": true
+    },
+    {
+      "detail": "methodology.ordered_stages must equal ['market_strategy', 'personas_and_sops', 'data_model', 'product_workflows', 'product_design']; ['personas_and_sops', 'data_model', 'product_workflows', 'product_design'] remains readable for legacy architectures",
+      "name": "method sequence is SOP to data to workflows to design",
+      "passed": true
+    },
+    {
+      "detail": "personas require identity, responsibilities, decisions, permissions, pain points, and success measures",
+      "name": "operational personas are complete",
+      "passed": true
+    },
+    {
+      "detail": "sops must include both common and product scopes",
+      "name": "common and product SOPs exist",
+      "passed": true
+    },
+    {
+      "detail": "each SOP requires trigger, preconditions, ordered steps, exceptions, outputs, controls, metrics, and version",
+      "name": "SOP contracts are complete",
+      "passed": true
+    },
+    {
+      "detail": "every owner_persona_ref must resolve to a persona",
+      "name": "SOP owners resolve to personas",
+      "passed": true
+    },
+    {
+      "detail": "every SOP step requires order, action, a resolved owner, reads, and writes",
+      "name": "SOP steps are attributable and data-aware",
+      "passed": true
+    },
+    {
+      "detail": "common SOP library schema_version must be product_factory.common_sop_library.v1",
+      "name": "common SOP library schema is supported",
+      "passed": true
+    },
+    {
+      "detail": "common SOPs must reference templates in the versioned common library",
+      "name": "common SOP template refs resolve",
+      "passed": true
+    },
+    {
+      "detail": "data_model requires canonical entities with fields, keys, source of truth, tenant scope, retention, and delete policy",
+      "name": "canonical data model is complete",
+      "passed": true
+    },
+    {
+      "detail": "relationships require resolved endpoints, cardinality, and foreign key",
+      "name": "data relationships exist",
+      "passed": true
+    },
+    {
+      "detail": "every SOP step read and write must resolve to a canonical entity",
+      "name": "SOP data refs resolve",
+      "passed": true
+    },
+    {
+      "detail": "migrations require expand-migrate-contract, no destructive automatic steps, validation, rollback, and source retention",
+      "name": "migration plans are additive and reversible",
+      "passed": true
+    },
+    {
+      "detail": "data transfers require mappings, reconciliation, rollback, and source retention",
+      "name": "data transfers are mapped and reconciled",
+      "passed": true
+    },
+    {
+      "detail": "workflows require states, transitions, CRUD, delete policy, happy path, and exceptions",
+      "name": "product workflows are complete",
+      "passed": true
+    },
+    {
+      "detail": "each workflow must define create, read, and update plus a delete policy",
+      "name": "workflow CRUD coverage is explicit",
+      "passed": true
+    },
+    {
+      "detail": "each CRUD operation entity_ref must resolve",
+      "name": "workflow CRUD entity refs resolve",
+      "passed": true
+    },
+    {
+      "detail": "each transition requires actor, guard, event, from, to, and action",
+      "name": "workflow transitions are guarded and auditable",
+      "passed": true
+    },
+    {
+      "detail": "workflow sop_refs must resolve",
+      "name": "workflow SOP refs resolve",
+      "passed": true
+    },
+    {
+      "detail": "workflow entity_refs must resolve",
+      "name": "workflow entity refs resolve",
+      "passed": true
+    },
+    {
+      "detail": "workflow persona_refs must resolve",
+      "name": "workflow persona refs resolve",
+      "passed": true
+    },
+    {
+      "detail": "routes require workflow, persona, primary entity, actions, and complete UI states",
+      "name": "product design routes derive from workflows",
+      "passed": true
+    },
+    {
+      "detail": "every route action must resolve to a workflow transition or CRUD operation",
+      "name": "product design actions resolve",
+      "passed": true
+    },
+    {
+      "detail": "every workflow must appear in product_design.route_map",
+      "name": "every workflow is represented in design",
+      "passed": true
+    },
+    {
+      "detail": "route persona_refs must resolve",
+      "name": "design persona refs resolve",
+      "passed": true
+    },
+    {
+      "detail": "product_design requires at least three acceptance criteria",
+      "name": "design acceptance criteria exist",
+      "passed": true
+    },
+    {
+      "detail": "public marketing routes and authenticated product routes must use distinct URLs",
+      "name": "public pages do not collide with authenticated product routes",
+      "passed": true
+    },
+    {
+      "detail": "entity lifecycles, commands, permissions, guards, routes, and system requirements resolve",
+      "name": "executable product contract is complete",
+      "passed": true
+    },
+    {
+      "detail": "composition, panels, command bindings, signature components, and browser journey resolve",
+      "name": "executable experience blueprint is complete",
+      "passed": true
+    },
+    {
+      "detail": "executable products must carry the product_design_agent experience, composition, signature interactions, and anti-template constraints into generation",
+      "name": "executable product has a distinctive design-agent contract",
+      "passed": true
+    },
+    {
+      "detail": "product_design.design_contract_version must equal product_factory.distinctive_product_design.v1",
+      "name": "distinctive design contract is supported",
+      "passed": true
+    },
+    {
+      "detail": "distinctive design requires an experience_thesis and interaction_metaphor",
+      "name": "distinctive experience thesis exists",
+      "passed": true
+    },
+    {
+      "detail": "distinctive design requires at least two signature interactions",
+      "name": "signature interactions are product-specific",
+      "passed": true
+    },
+    {
+      "detail": "visual_language requires color_system, typography, shape_language, and data_visualization",
+      "name": "visual language is explicit",
+      "passed": true
+    },
+    {
+      "detail": "composition requires public_entry and authenticated_workspace",
+      "name": "public and authenticated composition are explicit",
+      "passed": true
+    },
+    {
+      "detail": "distinctive design requires at least three anti_template_constraints",
+      "name": "anti-template constraints are explicit",
+      "passed": true
+    },
+    {
+      "detail": "every defined agent requires done status, passed checks, and no failed checks",
+      "name": "all architecture agents provide passing evidence",
+      "passed": true
+    }
+  ],
+  "counts": {
+    "agent_evidence": 12,
+    "data_transfers": 1,
+    "entities": 8,
+    "migrations": 1,
+    "personas": 4,
+    "public_pages": 5,
+    "routes": 8,
+    "sops": 7,
+    "workflows": 7
+  },
+  "created_at": "2026-08-29T23:55:02+00:00",
+  "failed_checks": [],
+  "passed": true,
+  "product_id": "quote-intake-demo",
+  "schema_version": "product_factory.product_architecture_verification.v1",
+  "status": "verified"
+}

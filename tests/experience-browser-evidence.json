@@ -1,0 +1,30 @@
+{
+  "browser_runtime": "agent-browser 0.26.0 via root-managed localhost preview",
+  "notes": [
+    "The deterministic Node journey suite passed command persistence, permission denial, and transport error checks.",
+    "Desktop browser evidence captured the public request sheet, staff workbench, retained evidence version, captured request command, and restored revision after reload.",
+    "Mobile browser evidence retained the active request at 390 by 844 with document scroll width equal to viewport width and advanced details closed.",
+    "The previously observed reload hydration mismatch is fixed: App now renders the public entry on the server and first client pass, then restores the staff session in an effect. The regression is covered by frontend/test/app-smoke.test.js and the production build passes.",
+    "Post-fix desktop reload restored request-browser-001 at revision 1 with no hydration overlay. Browser-observed activity includes request capture, retained evidence, qualification, assignment priority, and quote-ready recording; handoff and exception routes rendered the same retained decision trail.",
+    "Blocking responsive defect after the first CSS repair: at a 390px viewport, documentElement.scrollWidth is 430px. The overflowing chain is .focused-workbench (scrollWidth 417), .decision-mode (417), and aside.decision-seam (right edge 429.95px, width 417.16px); the route heading itself is no longer the cause.",
+    "The source repair now lets the focused workbench, decision mode, decision seam, criterion content, decision events, and dock copy shrink below their min-content width and wrap long decision text. The deterministic regression is covered by frontend/test/app-smoke.test.js.",
+    "The root-managed browser rerun passed in the retained Decision-mode workspace at 390 by 844: window.innerWidth, document.documentElement.scrollWidth, and document.body.scrollWidth were all exactly 390 pixels.",
+    "Screenshots: tests/browser-desktop-postfix-reload.png, tests/browser-desktop-readiness.png, tests/browser-desktop-handoff.png, tests/browser-desktop-exceptions.png, and tests/browser-mobile-final.png."
+  ],
+  "passed": true,
+  "schema_version": "product_factory.experience_browser_evidence.v1",
+  "usability": {
+    "advanced_controls_hidden_by_default": true,
+    "desktop_context_preserved": true,
+    "maximum_primary_actions_per_mode": 1,
+    "mobile_context_preserved": true,
+    "no_horizontal_overflow": true,
+    "verified_modes": ["request", "evidence", "decision"]
+  },
+  "verified_journeys": [
+    "request_capture_and_qualification",
+    "supported_request_assignment",
+    "site_visit_scope_capture",
+    "readiness_handoff_and_exception"
+  ]
+}

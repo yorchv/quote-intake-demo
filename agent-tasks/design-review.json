@@ -1,0 +1,139 @@
+{
+  "context": {
+    "authenticated_preview": {
+      "browser_storage": "sessionStorage",
+      "browser_storage_key": "product-session:quote-intake-demo",
+      "endpoint": "POST http://127.0.0.1:8000/auth/demo-session",
+      "instructions": "Create a local demo session through the API, store the returned session object in sessionStorage, reload the frontend, and inspect the rendered authenticated workspace.",
+      "mode": "local_demo_session",
+      "request": {
+        "access_token": "design-review",
+        "product_id": "quote-intake-demo"
+      },
+      "require_real_authenticated_render": true
+    },
+    "backend_preview_command": "PRODUCT_ENV=development .venv/bin/python -m uvicorn app:app --host 127.0.0.1 --port 8000",
+    "backend_preview_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/backend",
+    "backend_preview_url": "http://127.0.0.1:8000",
+    "contract_ref": "design-readiness-contract.json",
+    "forbidden_scaffold_phrases": [
+      "Pilot available",
+      "One workflow configured.",
+      "Secure access for pilot teams.",
+      "Usage tracked after real work.",
+      "Catch blocked work",
+      "Route reviews",
+      "Track evidence",
+      "Request a pilot",
+      "Pilot workflow",
+      "Share the workflow and team context."
+    ],
+    "market": "Independent residential service contractors with 2 to 20 employees that receive estimate requests through calls, texts, email, and web forms",
+    "outcome": "Turn each inbound service request into a complete, assigned, customer-visible quote package with site details, photos, scope notes, and an explicit quote-ready decision",
+    "preview_command": "npm run dev -- --hostname 127.0.0.1 --port 4173",
+    "preview_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/frontend",
+    "preview_setup_commands": [
+      {
+        "command": "npm install",
+        "directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/frontend"
+      },
+      {
+        "command": "python3 -m venv .venv && .venv/bin/python -m pip install -r requirements.txt",
+        "directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/backend"
+      }
+    ],
+    "preview_url": "http://127.0.0.1:4173",
+    "primary_user": "The office coordinator or owner who qualifies incoming work and schedules estimators without replacing the company's accounting or dispatch system",
+    "product_id": "quote-intake-demo",
+    "quality_criteria": [
+      "product_specificity",
+      "visual_hierarchy",
+      "composition",
+      "typography",
+      "content_quality",
+      "responsive_quality"
+    ],
+    "required_checks": [
+      "public_entry_matches_design_contract",
+      "authenticated_workspace_matches_design_contract",
+      "no_generic_shell_language",
+      "copy_is_complete_and_customer_facing",
+      "states_are_truthful",
+      "responsive_layout_is_usable",
+      "accessibility_basics_pass",
+      "focused_modes_match_contract",
+      "advanced_controls_are_progressively_disclosed",
+      "primary_object_context_is_preserved",
+      "one_primary_action_per_mode"
+    ],
+    "required_views": [
+      {
+        "minimum_height": 700,
+        "minimum_width": 1200,
+        "surface": "public",
+        "viewport": "desktop"
+      },
+      {
+        "minimum_height": 640,
+        "minimum_width": 360,
+        "surface": "public",
+        "viewport": "mobile"
+      },
+      {
+        "minimum_height": 700,
+        "minimum_width": 1200,
+        "surface": "authenticated",
+        "viewport": "desktop"
+      },
+      {
+        "minimum_height": 640,
+        "minimum_width": 360,
+        "surface": "authenticated",
+        "viewport": "mobile"
+      }
+    ],
+    "review_ref": "design-readiness-review.json",
+    "verification_ref": "design-readiness-verification.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "design_quality_review_agent",
+    "allowed_scope": [
+      "design-evidence/**",
+      "design-readiness-contract.json",
+      "design-readiness-review.json",
+      "design-readiness-verification.json"
+    ],
+    "definition_of_done": [
+      "Render and inspect public and authenticated desktop and mobile views.",
+      "When the reviewer sandbox cannot bind preview ports, use retained root-managed screenshots only when design-evidence/manifest.json records exact surfaces, viewports, pixel dimensions, SHA-256 digests, marker separation, mode visibility, and overflow measurements.",
+      "Reject generic pilot, shell, workflow, and factory copy; list the exact blocking findings for the experience implementation agent.",
+      "Verify the public entry and authenticated workspace implement the declared design composition.",
+      "Score every criterion from 1 to 5 with concrete screenshot evidence; every score must be at least 4.",
+      "Retain PNG screenshots under design-evidence with their SHA-256 digests.",
+      "Set decision to approved only when no blocking issue remains.",
+      "python3 scripts/verify-design-readiness.py passes."
+    ],
+    "dependencies": [
+      "product_experience_implementation_agent",
+      "launch_distribution_agent",
+      "customer_clarity_review_agent",
+      "skeptical_buyer_review_agent",
+      "organic_discovery_review_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "frontend source or tests; the independent reviewer reports defects but does not repair its own findings",
+      "lowering minimum quality scores",
+      "removing required viewports or checks",
+      "approving without opening every retained screenshot",
+      "self-attested screenshot dimensions or digests",
+      "raw secret persistence"
+    ],
+    "objective": "Independently review the rendered product, reject generic factory scaffolding, and retain reproducible visual evidence before publication.",
+    "task_id": "review-quote-intake-demo-design-readiness",
+    "title": "Block or approve QuoteRivet customer-facing design",
+    "verification_command": "python3 scripts/verify-design-readiness.py"
+  }
+}

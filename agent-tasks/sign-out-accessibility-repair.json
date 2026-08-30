@@ -1,0 +1,39 @@
+{
+  "context": {
+    "review_ref": "design-readiness-review.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/frontend"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "product_experience_implementation_agent",
+    "allowed_scope": [
+      "frontend/src/App.jsx",
+      "frontend/src/styles.css",
+      "frontend/test/app-smoke.test.js",
+      "design-readiness-review.json"
+    ],
+    "definition_of_done": [
+      "Give the authenticated Sign out control an explicit stable class and keep its visible text label at desktop and mobile widths.",
+      "Use a dark or transparent control background with WCAG AA text contrast against the graphite top bar in default, hover, active, and disabled states.",
+      "Provide a clearly visible keyboard focus indicator and retain at least a 44 by 44 pixel mobile target.",
+      "Keep the mobile top bar within a 390 pixel viewport by hiding lower-priority persona text rather than the Sign out label.",
+      "Preserve logout behavior and accessible icon semantics.",
+      "Add focused source assertions for label visibility, contrast styling, focus-visible styling, and mobile target sizing.",
+      "npm test passes."
+    ],
+    "dependencies": [
+      "design_quality_review_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "design review edits",
+      "authorization, persistence, command, navigation, or unrelated layout changes",
+      "hiding the Sign out label at any required viewport",
+      "raw secret persistence"
+    ],
+    "objective": "Repair the blocking Sign out contrast, label, focus, and mobile-target accessibility defect from independent design review.",
+    "task_id": "repair-quote-intake-demo-sign-out-accessibility",
+    "title": "Repair QuoteRivet Sign out accessibility",
+    "verification_command": "npm test"
+  }
+}

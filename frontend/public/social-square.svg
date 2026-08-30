@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title description">
+  <title id="title">QuoteRivet quote-ready request package</title>
+  <desc id="description">A square paper-style QuoteRivet request dossier shows intake, estimator assignment, site evidence, and a pending human quote-ready decision.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#c9bfae" stroke-opacity=".26"/></pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#2b251c" flood-opacity=".13"/></filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#f3eee4"/>
+  <rect width="1200" height="1200" fill="url(#grid)"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <circle cx="94" cy="88" r="27" fill="#6f3518" stroke="#d8a883" stroke-width="3"/>
+    <text x="94" y="97" fill="#fffaf0" font-family="Georgia, serif" font-size="27" font-weight="700" text-anchor="middle">Q</text>
+    <text x="137" y="98" fill="#24231f" font-family="Georgia, serif" font-size="34" font-weight="700">QuoteRivet</text>
+    <text x="1106" y="94" fill="#225d78" font-size="16" font-weight="700" text-anchor="end">ESTIMATE REQUEST INTAKE</text>
+
+    <text x="72" y="196" fill="#6f3518" font-family="monospace" font-size="17" font-weight="700" letter-spacing="2">ONE REQUEST. ONE ACCOUNTABLE NEXT STEP.</text>
+    <text x="72" y="292" fill="#46556a" font-family="Georgia, serif" font-size="76" letter-spacing="-3">Turn scattered requests</text>
+    <text x="72" y="372" fill="#46556a" font-family="Georgia, serif" font-size="76" letter-spacing="-3">into an owned path.</text>
+    <text x="75" y="431" fill="#4c4942" font-size="25">Keep request facts, site evidence, and the accountable</text>
+    <text x="75" y="467" fill="#4c4942" font-size="25">estimator connected before the quote-ready review.</text>
+
+    <g filter="url(#shadow)">
+      <rect x="74" y="540" width="1052" height="508" fill="#fffaf0" stroke="#c9bfae"/>
+      <rect x="74" y="540" width="10" height="508" fill="#955029"/>
+    </g>
+    <text x="126" y="598" fill="#6f3518" font-family="monospace" font-size="15" font-weight="700" letter-spacing="1.8">ESTIMATE REQUEST SHEET</text>
+    <text x="126" y="650" fill="#24231f" font-family="Georgia, serif" font-size="38" font-weight="700">Exterior repair estimate</text>
+    <rect x="900" y="586" width="164" height="43" rx="22" fill="#fde4df" stroke="#a75248"/>
+    <text x="982" y="614" fill="#6b241e" font-size="14" font-weight="700" text-anchor="middle">IN REVIEW</text>
+
+    <line x1="164" y1="734" x2="164" y2="913" stroke="#c9bfae" stroke-width="4"/>
+    <circle cx="164" cy="738" r="16" fill="#955029"/>
+    <text x="204" y="727" fill="#6f3518" font-family="monospace" font-size="13" font-weight="700">01  REQUEST CAPTURED</text>
+    <text x="204" y="759" fill="#24231f" font-size="20" font-weight="700">Source and contact details retained</text>
+    <circle cx="164" cy="827" r="16" fill="#955029"/>
+    <text x="204" y="816" fill="#6f3518" font-family="monospace" font-size="13" font-weight="700">02  ESTIMATOR ACCOUNTABLE</text>
+    <text x="204" y="848" fill="#24231f" font-size="20" font-weight="700">Visit window and owner recorded</text>
+    <circle cx="164" cy="916" r="16" fill="#955029"/>
+    <text x="204" y="905" fill="#6f3518" font-family="monospace" font-size="13" font-weight="700">03  SITE EVIDENCE CURRENT</text>
+    <text x="204" y="937" fill="#24231f" font-size="20" font-weight="700">Photos, measurements, scope notes</text>
+
+    <rect x="665" y="705" width="399" height="240" fill="#24231f"/>
+    <text x="704" y="759" fill="#d8a883" font-family="monospace" font-size="14" font-weight="700" letter-spacing="1.5">QUOTE-READY DECISION</text>
+    <text x="704" y="818" fill="#fffaf0" font-family="Georgia, serif" font-size="34" font-weight="700">Pending review</text>
+    <text x="704" y="861" fill="#d9d1c4" font-size="18">A person records ready or not ready,</text>
+    <text x="704" y="890" fill="#d9d1c4" font-size="18">with evidence and a reason.</text>
+
+    <rect x="75" y="1102" width="610" height="54" rx="27" fill="#24231f"/>
+    <text x="106" y="1136" fill="#fffaf0" font-size="16" font-weight="700" letter-spacing="1">WORKS BESIDE ACCOUNTING + DISPATCH</text>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+{
+  "context": {
+    "browser_evidence_ref": "copy-review-evidence/browser-rendered-routes.json",
+    "clarity_review_ref": "customer-clarity-review.json",
+    "contract_ref": "organic-discovery.json",
+    "organic_review_ref": "organic-discovery-review.json",
+    "skeptical_review_ref": "skeptical-buyer-review.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "product_experience_implementation_agent",
+    "allowed_scope": [
+      "frontend/src/App.jsx",
+      "frontend/test/app-smoke.test.js",
+      "organic-discovery.json",
+      "organic-discovery-review.json",
+      "customer-clarity-review.json",
+      "skeptical-buyer-review.json",
+      "copy-review-evidence/browser-rendered-routes.json"
+    ],
+    "definition_of_done": [
+      "For each declared public page, reconcile only title and primary_heading to the exact approved rendered title and heading recorded in browser-rendered-routes.json.",
+      "Do not alter positioning, claims, evidence sources, source refs, search intent, canonical paths, index policy, CTA, or measurement strategy.",
+      "Make the root public entry visibly link to every declared internal public resource route.",
+      "Make the root public entry show buyer-readable proof labels driven by its declared proof_refs, linking external sources to exact retained source_ref URLs and marking internal product scope as non-link internal evidence.",
+      "Preserve the approved customer language and do not edit any review artifact.",
+      "Add focused regression assertions for exact contract/rendered title and heading alignment, root resource links, readable source labels, and retained external URLs.",
+      "npm test and npm run build pass."
+    ],
+    "dependencies": [
+      "customer_clarity_review_agent",
+      "skeptical_buyer_review_agent",
+      "organic_discovery_review_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "new claims, evidence sources, positioning, search intents, routes, or measurement rules",
+      "review artifact edits",
+      "authorization, persistence, or command behavior",
+      "raw secret persistence"
+    ],
+    "objective": "Reconcile approved rendered public copy with the organic-discovery contract and expose the root page's declared internal links and proof sources.",
+    "task_id": "repair-quote-intake-demo-organic-discovery-contract",
+    "title": "Reconcile QuoteRivet rendered discovery contract",
+    "verification_command": "npm test && npm run build"
+  }
+}

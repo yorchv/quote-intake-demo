@@ -1,0 +1,18 @@
+{
+  "build_id": "build_quote_intake_demo_2ef739047aad",
+  "generator_package_schema": "product_factory.hosted_app_package.v1",
+  "license": {
+    "copyright_year": 2026,
+    "licensor": "Jorge Vivas",
+    "profile": "proprietary_internal_use_v1"
+  },
+  "product_id": "quote-intake-demo",
+  "product_name": "QuoteRivet",
+  "repository": {
+    "name": "quote-intake-demo",
+    "organization": "yorchv",
+    "visibility": "private"
+  },
+  "schema_version": "product_factory.product_repository_lineage.v1",
+  "source_package_digest": "sha256:c816e7dfc2071490d0194158be7e58ef0fa5b27942e4afe58dacba42ee464b15"
+}

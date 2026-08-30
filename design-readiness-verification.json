@@ -1,0 +1,337 @@
+{
+  "build_id": "build_quote_intake_demo_2ef739047aad",
+  "checks": [
+    {
+      "detail": true,
+      "name": "contract is blocking",
+      "passed": true
+    },
+    {
+      "detail": "quote-intake-demo",
+      "name": "review matches product",
+      "passed": true
+    },
+    {
+      "detail": "build_quote_intake_demo_2ef739047aad",
+      "name": "review matches build",
+      "passed": true
+    },
+    {
+      "detail": "complete",
+      "name": "review is complete",
+      "passed": true
+    },
+    {
+      "detail": "approved",
+      "name": "review decision is approved",
+      "passed": true
+    },
+    {
+      "detail": "design_quality_review_agent",
+      "name": "review is independent",
+      "passed": true
+    },
+    {
+      "detail": {
+        "evidence": "All four screenshots use QuoteRivet's estimate-request vocabulary. The public views discuss service location, requested work, follow-up consent, visits, and quotes. The authenticated views show request-browser-001, estimator priority, quote readiness, quote-ready handoff, and operational exceptions rather than a generic dashboard.",
+        "minimum": 4,
+        "score": 4
+      },
+      "name": "quality score passes: product_specificity",
+      "passed": true
+    },
+    {
+      "detail": {
+        "evidence": "public-desktop.png and public-mobile.png lead with one dominant customer promise and one dark start action. authenticated-desktop.png and authenticated-mobile.png establish the exception title, persistent request facts, active Decision mode, and one copper next action without KPI strips, charts, or detached card grids.",
+        "minimum": 4,
+        "score": 4
+      },
+      "name": "quality score passes: visual_hierarchy",
+      "passed": true
+    },
+    {
+      "detail": {
+        "evidence": "public-desktop.png and public-mobile.png use a single estimate-request sheet with one start action and a numbered human-review explanation. authenticated-desktop.png and authenticated-mobile.png keep request-browser-001, its state, accountable role, and missing facts above the focused Request, Evidence, and Decision modes, with one guarded action in the bottom dock.",
+        "minimum": 4,
+        "score": 4
+      },
+      "name": "quality score passes: composition",
+      "passed": true
+    },
+    {
+      "detail": {
+        "evidence": "Headings, body copy, folios, request identifiers, modes, and primary actions remain readable across all four screenshots. authenticated-desktop.png and authenticated-mobile.png now show a labeled 44-pixel Sign out control with light text on a graphite background; the manifest records rgb(255, 250, 240) on rgb(59, 57, 50), an independently calculated 11.11:1 contrast ratio.",
+        "minimum": 4,
+        "score": 4
+      },
+      "name": "quality score passes: typography",
+      "passed": true
+    },
+    {
+      "detail": {
+        "evidence": "public-desktop.png and public-mobile.png explain what the requester supplies, that a person reviews it, and what is saved. authenticated-desktop.png and authenticated-mobile.png name the operational exception, accountable office coordinator, current Supported state, and exact next action. None of the contract's ten forbidden scaffold phrases appear.",
+        "minimum": 4,
+        "score": 4
+      },
+      "name": "quality score passes: content_quality",
+      "passed": true
+    },
+    {
+      "detail": {
+        "evidence": "The 1440x900 views use wide two-column or workbench compositions. The 390x844 views reflow the public explanation into one column and the authenticated request facts into a two-column strip. manifest.json records no horizontal overflow for all four exact viewports.",
+        "minimum": 4,
+        "score": 4
+      },
+      "name": "quality score passes: responsive_quality",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: public_entry_matches_design_contract",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: authenticated_workspace_matches_design_contract",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: no_generic_shell_language",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: copy_is_complete_and_customer_facing",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: states_are_truthful",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: responsive_layout_is_usable",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: accessibility_basics_pass",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: focused_modes_match_contract",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: advanced_controls_are_progressively_disclosed",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: primary_object_context_is_preserved",
+      "passed": true
+    },
+    {
+      "detail": true,
+      "name": "review check passes: one_primary_action_per_mode",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "one screenshot declared: public desktop",
+      "passed": true
+    },
+    {
+      "detail": "design-evidence/public-desktop.png",
+      "name": "PNG evidence exists: public desktop",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": [
+          1440,
+          900
+        ],
+        "required": [
+          1200,
+          700
+        ]
+      },
+      "name": "viewport dimensions pass: public desktop",
+      "passed": true
+    },
+    {
+      "detail": "4bd893c6f54336b2250a6df83ddaebe8cfa3239bf5239d1585fe8c3bc2cfb407",
+      "name": "screenshot digest passes: public desktop",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "one screenshot declared: public mobile",
+      "passed": true
+    },
+    {
+      "detail": "design-evidence/public-mobile.png",
+      "name": "PNG evidence exists: public mobile",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": [
+          390,
+          844
+        ],
+        "required": [
+          360,
+          640
+        ]
+      },
+      "name": "viewport dimensions pass: public mobile",
+      "passed": true
+    },
+    {
+      "detail": "355c61c022b43c2867c8974b59c3deb4a68b943820fa21f61b357394e1e54d07",
+      "name": "screenshot digest passes: public mobile",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "one screenshot declared: authenticated desktop",
+      "passed": true
+    },
+    {
+      "detail": "design-evidence/authenticated-desktop.png",
+      "name": "PNG evidence exists: authenticated desktop",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": [
+          1440,
+          900
+        ],
+        "required": [
+          1200,
+          700
+        ]
+      },
+      "name": "viewport dimensions pass: authenticated desktop",
+      "passed": true
+    },
+    {
+      "detail": "55fc5f84e075b71e1b19c30f68cc60dbf0fc6fdfe8cd1b8c98b43bec2823f7bd",
+      "name": "screenshot digest passes: authenticated desktop",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "one screenshot declared: authenticated mobile",
+      "passed": true
+    },
+    {
+      "detail": "design-evidence/authenticated-mobile.png",
+      "name": "PNG evidence exists: authenticated mobile",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual": [
+          390,
+          844
+        ],
+        "required": [
+          360,
+          640
+        ]
+      },
+      "name": "viewport dimensions pass: authenticated mobile",
+      "passed": true
+    },
+    {
+      "detail": "00aa6f11a4e2875da1b50defaf7e2cf9187129ae7284c01df6a7891609b80a49",
+      "name": "screenshot digest passes: authenticated mobile",
+      "passed": true
+    },
+    {
+      "detail": "data-product-public-entry",
+      "name": "product-specific public entry marker exists",
+      "passed": true
+    },
+    {
+      "detail": "data-design-contract",
+      "name": "authenticated design marker exists",
+      "passed": true
+    },
+    {
+      "detail": "Pilot available",
+      "name": "generic scaffold phrase absent: Pilot available",
+      "passed": true
+    },
+    {
+      "detail": "One workflow configured.",
+      "name": "generic scaffold phrase absent: One workflow configured.",
+      "passed": true
+    },
+    {
+      "detail": "Secure access for pilot teams.",
+      "name": "generic scaffold phrase absent: Secure access for pilot teams.",
+      "passed": true
+    },
+    {
+      "detail": "Usage tracked after real work.",
+      "name": "generic scaffold phrase absent: Usage tracked after real work.",
+      "passed": true
+    },
+    {
+      "detail": "Catch blocked work",
+      "name": "generic scaffold phrase absent: Catch blocked work",
+      "passed": true
+    },
+    {
+      "detail": "Route reviews",
+      "name": "generic scaffold phrase absent: Route reviews",
+      "passed": true
+    },
+    {
+      "detail": "Track evidence",
+      "name": "generic scaffold phrase absent: Track evidence",
+      "passed": true
+    },
+    {
+      "detail": "Request a pilot",
+      "name": "generic scaffold phrase absent: Request a pilot",
+      "passed": true
+    },
+    {
+      "detail": "Pilot workflow",
+      "name": "generic scaffold phrase absent: Pilot workflow",
+      "passed": true
+    },
+    {
+      "detail": "Share the workflow and team context.",
+      "name": "generic scaffold phrase absent: Share the workflow and team context.",
+      "passed": true
+    },
+    {
+      "detail": ", and.",
+      "name": "broken trailing conjunction copy is absent",
+      "passed": true
+    },
+    {
+      "detail": [],
+      "name": "no blocking review issues remain",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "passed": true,
+  "product_id": "quote-intake-demo",
+  "review_decision": "approved",
+  "schema_version": "product_factory.design_readiness_verification.v1",
+  "status": "design_ready",
+  "verified_screenshot_count": 4
+}

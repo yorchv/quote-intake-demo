@@ -1,0 +1,47 @@
+{
+  "context": {
+    "contract_ref": "organic-discovery.json",
+    "preview_command": "npm run dev -- --hostname 127.0.0.1 --port 4173",
+    "preview_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/frontend",
+    "preview_url": "http://127.0.0.1:4173",
+    "required": true,
+    "review_ref": "skeptical-buyer-review.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "skeptical_buyer_review_agent",
+    "allowed_scope": [
+      "skeptical-buyer-review.json",
+      "copy-review-evidence/**",
+      "organic-discovery.json"
+    ],
+    "definition_of_done": [
+      "Identify the concrete customer outcome and buying objection answered by each rendered page.",
+      "Reject vague benefits, unsupported superiority, guarantees, invented proof, or mechanisms presented without customer value.",
+      "Verify that visible claims resolve to retained evidence and that important limitations remain clear.",
+      "Require an exact replacement direction for every blocking issue without editing the product source.",
+      "Write the review artifact with schema_version product_factory.public_copy_review.v1, review_type skeptical_buyer, reviewer_agent_id skeptical_buyer_review_agent, status verified, the current product_id and build_id, and reviewed_routes containing every declared public route exactly once.",
+      "Review every declared public route at desktop and mobile widths in its rendered context.",
+      "When the reviewer sandbox cannot bind a preview port, use retained root-managed screenshots only when copy-review-evidence records the exact route, viewport, and matching rendered title and heading.",
+      "Record one route_reviews entry per public route with route, plain_language_summary, customer_outcome, unexplained_terms, and passed.",
+      "Set decision to approved only when every route passes, unexplained_terms is empty, checks_passed is non-empty, and checks_failed and issues are empty."
+    ],
+    "dependencies": [
+      "product_experience_implementation_agent",
+      "launch_distribution_agent",
+      "customer_clarity_review_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "frontend source, product behavior, or strategy source; the independent reviewer reports defects but does not repair its own findings",
+      "approving copy merely because it is grammatical, distinctive, or keyword-rich",
+      "inventing customer evidence, performance, reviews, rankings, revenue, or legal conclusions",
+      "treating an undefined product metaphor as familiar customer language",
+      "raw secret persistence"
+    ],
+    "objective": "Independently verify that every public page leads with a concrete customer outcome, answers likely buyer objections, and supports every material claim with visible evidence.",
+    "task_id": "review-quote-intake-demo-skeptical-buyer-review",
+    "title": "Review QuoteRivet as a skeptical prospective buyer"
+  }
+}

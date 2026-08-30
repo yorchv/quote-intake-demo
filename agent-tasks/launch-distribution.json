@@ -1,0 +1,94 @@
+{
+  "context": {
+    "contract_ref": "launch-distribution.json",
+    "image_generation_policy": "Prefer product-specific generated artwork when available; retain deterministic code-native assets as the build-safe fallback.",
+    "market": "Independent residential service contractors with 2 to 20 employees that receive estimate requests through calls, texts, email, and web forms",
+    "organic_discovery_ref": "organic-discovery.json",
+    "outcome": "Turn each inbound service request into a complete, assigned, customer-visible quote package with site details, photos, scope notes, and an explicit quote-ready decision",
+    "primary_user": "The office coordinator or owner who qualifies incoming work and schedules estimators without replacing the company's accounting or dispatch system",
+    "product_id": "quote-intake-demo",
+    "required_images": [
+      {
+        "height": 630,
+        "id": "landscape",
+        "output": "frontend/public/social-preview.png",
+        "source": "frontend/public/social-preview.svg",
+        "uses": [
+          "Open Graph",
+          "LinkedIn",
+          "X"
+        ],
+        "width": 1200
+      },
+      {
+        "height": 1200,
+        "id": "square",
+        "output": "frontend/public/social-square.png",
+        "source": "frontend/public/social-square.svg",
+        "uses": [
+          "Instagram feed",
+          "Facebook feed"
+        ],
+        "width": 1200
+      },
+      {
+        "height": 1920,
+        "id": "story",
+        "output": "frontend/public/social-story.png",
+        "source": "frontend/public/social-story.svg",
+        "uses": [
+          "Instagram story",
+          "vertical social"
+        ],
+        "width": 1080
+      }
+    ],
+    "social_copy_ref": "launch-assets/social-copy.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "launch_distribution_agent",
+    "allowed_scope": [
+      "frontend/public/social-*.svg",
+      "frontend/public/social-*.png",
+      "frontend/src/pages/index.jsx",
+      "frontend/src/pages/**/*.jsx",
+      "frontend/src/components/MarketingPage.jsx",
+      "frontend/src/pages/sitemap.xml.jsx",
+      "frontend/src/pages/robots.txt.jsx",
+      "frontend/public/sitemap.xml",
+      "frontend/public/robots.txt",
+      "frontend/scripts/prepare-static-deployment.mjs",
+      "launch-assets/**",
+      "organic-discovery.json",
+      "launch-distribution.json",
+      "launch-distribution-verification.json"
+    ],
+    "definition_of_done": [
+      "Landscape 1200x630, square 1200x1200, and story 1080x1920 images express the product's actual visual language.",
+      "Open Graph and X cards have a title, description, canonical URL, image, dimensions, and accessible alt text.",
+      "Search metadata includes a concise title and description, canonical URL, robots directive, and truthful page-specific JSON-LD.",
+      "Public copy uses researched intent phrases visibly; the obsolete meta keywords tag is absent.",
+      "Platform-ready captions and hashtags are truthful, product-specific, and retained in launch-assets/social-copy.json.",
+      "sitemap.xml and robots.txt are generated from the deployed request origin.",
+      "When frontend/vercel.json declares outputDirectory out, preserve static export: generate sitemap.xml and robots.txt through frontend/scripts/prepare-static-deployment.mjs and do not add getServerSideProps pages.",
+      "python3 scripts/verify-launch-distribution.py passes before deployment.",
+      "Live rich-preview, image, sitemap, robots, and rendered metadata evidence is retained after deployment; for a local-only canary with deployment explicitly unauthorized, retain these as live_evidence_pending and do not block local verification."
+    ],
+    "dependencies": [
+      "product_experience_implementation_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "product workflow behavior",
+      "authorization or persistence code",
+      "unsupported customer, revenue, performance, or ranking claims",
+      "raw secret persistence"
+    ],
+    "objective": "Make the product recognizable, shareable, and indexable without unsupported claims or generic placeholder artwork.",
+    "task_id": "generate-quote-intake-demo-launch-distribution",
+    "title": "Generate and verify QuoteRivet social and search assets",
+    "verification_command": "python3 scripts/verify-launch-distribution.py"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "context": {
+    "organic_review_ref": "organic-discovery-review.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/frontend"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "product_experience_implementation_agent",
+    "allowed_scope": [
+      "frontend/src/pages/request.jsx",
+      "frontend/test/app-smoke.test.js",
+      "organic-discovery-review.json"
+    ],
+    "definition_of_done": [
+      "Create /request as the anonymous QuoteRivet estimate-request entry using the existing App experience and runtime configuration script.",
+      "Set a customer-readable title and description and a noindex,nofollow,noarchive meta directive because this is a conversion form rather than an indexable marketing resource.",
+      "Do not create a second intake implementation or change product behavior.",
+      "Add regression assertions that the page imports App, loads product-api-config.js before interaction, and emits the noindex directive.",
+      "npm test and npm run build pass and the static export contains request.html."
+    ],
+    "dependencies": [
+      "organic_discovery_review_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "review artifact edits",
+      "authorization, persistence, command, or strategy changes",
+      "indexing /request or adding it to sitemap.xml",
+      "raw secret persistence"
+    ],
+    "objective": "Repair the broken Start an estimate request CTA by adding the declared anonymous, noindex /request route.",
+    "task_id": "repair-quote-intake-demo-request-route",
+    "title": "Add QuoteRivet request route",
+    "verification_command": "npm test && npm run build"
+  }
+}

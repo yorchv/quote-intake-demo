@@ -1,0 +1,37 @@
+{
+  "context": {
+    "contract_ref": "design-readiness-contract.json",
+    "review_ref": "design-readiness-review.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "product_experience_implementation_agent",
+    "allowed_scope": [
+      "frontend/src/App.jsx",
+      "frontend/test/app-smoke.test.js",
+      "design-readiness-contract.json",
+      "design-readiness-review.json"
+    ],
+    "definition_of_done": [
+      "Add the exact data-design-contract marker required by design-readiness-contract.json to the authenticated workspace root only.",
+      "Do not add the authenticated marker to anonymous public entry markup.",
+      "Preserve all product behavior, accessibility labels, focused modes, and command bindings.",
+      "Add a regression assertion for authenticated marker placement and public-marker separation.",
+      "npm test passes."
+    ],
+    "dependencies": [
+      "design_quality_review_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "design contract or review edits",
+      "authorization, persistence, commands, copy, or layout changes",
+      "raw secret persistence"
+    ],
+    "objective": "Add the missing authenticated design-contract marker identified by independent design review.",
+    "task_id": "repair-quote-intake-demo-design-marker",
+    "title": "Add QuoteRivet authenticated design marker",
+    "verification_command": "npm test"
+  }
+}

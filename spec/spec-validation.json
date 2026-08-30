@@ -1,0 +1,472 @@
+{
+  "checks": [
+    {
+      "message": "schema_version must be product_factory.product_spec.v1",
+      "name": "schema version is supported",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "product_id must be lowercase kebab-case for artifact/deploy paths",
+      "name": "product id is deployable slug",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "generation_mode must be static_console or hosted_app",
+      "name": "generation mode is supported",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "name must be a non-empty string",
+      "name": "name is non-empty",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "market must be a non-empty string",
+      "name": "market is non-empty",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "primary_user must be a non-empty string",
+      "name": "primary_user is non-empty",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "outcome must be a non-empty string",
+      "name": "outcome is non-empty",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 3 product capabilities",
+      "name": "capabilities are specific",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 1 workflow",
+      "name": "workflows exist",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 3 verification checks",
+      "name": "verification checks exist",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 2 UI acceptance criteria",
+      "name": "ui acceptance criteria exist",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 2 design requirements",
+      "name": "design requirements exist",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 2 quality gates",
+      "name": "quality gates exist",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 1 forbidden action",
+      "name": "forbidden actions exist",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "executable_product is invalid: ",
+      "name": "executable product contract is valid",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "product_architecture must include schema_version, architecture_ref, architecture_sha256, status, and required_for_generation",
+      "name": "product architecture link is complete",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "product_architecture.schema_version must be product_factory.product_architecture_ref.v1",
+      "name": "product architecture schema version is supported",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "required product architectures must include a lowercase SHA256 digest",
+      "name": "product architecture digest is sha256",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec should include a naming block with researched candidates, selection rationale, and rejected generic names",
+      "name": "naming research recommended",
+      "passed": true,
+      "severity": "warning"
+    },
+    {
+      "message": "naming.selected_name must match the customer-facing product name",
+      "name": "selected name matches product name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "naming.candidates must include at least 3 researched names",
+      "name": "naming candidates are researched",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "naming.rejected_names must include at least 2 rejected names with reasons",
+      "name": "naming rejects weak alternatives",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "naming.research_sources must include at least 2 source refs or search notes",
+      "name": "naming sources recorded",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "customer-facing name should avoid generic utility labels like Radar, Dashboard, Desk, Command Center, Console, Workspace, Portal, or Hub",
+      "name": "customer name avoids generic utility labels",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "customer-facing name should be short enough to remember",
+      "name": "customer name is short",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "researched naming is incomplete: ",
+      "name": "researched naming release contract passes",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 2 entities or providers",
+      "name": "domain entities exist",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec must define at least 1 record, order, or compliance document",
+      "name": "operational records exist",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "workflow 1 must define id or name",
+      "name": "workflow 1 has identity",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "workflow 2 must define id or name",
+      "name": "workflow 2 has identity",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "workflow 3 must define id or name",
+      "name": "workflow 3 has identity",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "workflow 4 must define id or name",
+      "name": "workflow 4 has identity",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "workflow 5 must define id or name",
+      "name": "workflow 5 has identity",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "workflow 6 must define id or name",
+      "name": "workflow 6 has identity",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "workflow 7 must define id or name",
+      "name": "workflow 7 has identity",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "entity 1 must define name",
+      "name": "entity 1 has name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "entity 2 must define name",
+      "name": "entity 2 has name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "entity 3 must define name",
+      "name": "entity 3 has name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "entity 4 must define name",
+      "name": "entity 4 has name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "entity 5 must define name",
+      "name": "entity 5 has name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "entity 6 must define name",
+      "name": "entity 6 has name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "entity 7 must define name",
+      "name": "entity 7 has name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "entity 8 must define name",
+      "name": "entity 8 has name",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "spec should define at least 2 metrics for first-viewport scanning",
+      "name": "metrics recommended",
+      "passed": true,
+      "severity": "warning"
+    },
+    {
+      "message": "spec should define business_model.instrumentation_events, spend_sources, and revenue_sources before business autonomy is expected",
+      "name": "business instrumentation recommended",
+      "passed": true,
+      "severity": "warning"
+    },
+    {
+      "message": "hosted products should include go_to_market.organic_discovery with researched positioning, public pages, crawler policy, and measurement",
+      "name": "organic discovery strategy recommended",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "organic discovery strategy is incomplete: ",
+      "name": "organic discovery strategy passes",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "hosted_generation.deployment_tier must be incubation, traction, or production",
+      "name": "hosted deployment tier is supported",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "hosted specs must include comprehensive_product with route, auth, state, and feedback contracts",
+      "name": "comprehensive hosted product contract exists",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "hosted specs must define comprehensive_product.route_contracts for every customer route",
+      "name": "every customer route has a contract",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 1 must include route, purpose, primary_state, empty_state, error_state, actions, and acceptance_criteria",
+      "name": "route contract 1 has complete behavior",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 1 must declare surface, access_policy, index_policy, include_in_sitemap, and canonical_path",
+      "name": "route contract 1 has explicit discovery policy",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "private route contract 1 must be authenticated or permission-required, noindex, and excluded from the sitemap",
+      "name": "route contract 1 keeps private routes out of search",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 2 must include route, purpose, primary_state, empty_state, error_state, actions, and acceptance_criteria",
+      "name": "route contract 2 has complete behavior",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 2 must declare surface, access_policy, index_policy, include_in_sitemap, and canonical_path",
+      "name": "route contract 2 has explicit discovery policy",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "private route contract 2 must be authenticated or permission-required, noindex, and excluded from the sitemap",
+      "name": "route contract 2 keeps private routes out of search",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 3 must include route, purpose, primary_state, empty_state, error_state, actions, and acceptance_criteria",
+      "name": "route contract 3 has complete behavior",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 3 must declare surface, access_policy, index_policy, include_in_sitemap, and canonical_path",
+      "name": "route contract 3 has explicit discovery policy",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "private route contract 3 must be authenticated or permission-required, noindex, and excluded from the sitemap",
+      "name": "route contract 3 keeps private routes out of search",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 4 must include route, purpose, primary_state, empty_state, error_state, actions, and acceptance_criteria",
+      "name": "route contract 4 has complete behavior",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 4 must declare surface, access_policy, index_policy, include_in_sitemap, and canonical_path",
+      "name": "route contract 4 has explicit discovery policy",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "private route contract 4 must be authenticated or permission-required, noindex, and excluded from the sitemap",
+      "name": "route contract 4 keeps private routes out of search",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 5 must include route, purpose, primary_state, empty_state, error_state, actions, and acceptance_criteria",
+      "name": "route contract 5 has complete behavior",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 5 must declare surface, access_policy, index_policy, include_in_sitemap, and canonical_path",
+      "name": "route contract 5 has explicit discovery policy",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "private route contract 5 must be authenticated or permission-required, noindex, and excluded from the sitemap",
+      "name": "route contract 5 keeps private routes out of search",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 6 must include route, purpose, primary_state, empty_state, error_state, actions, and acceptance_criteria",
+      "name": "route contract 6 has complete behavior",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 6 must declare surface, access_policy, index_policy, include_in_sitemap, and canonical_path",
+      "name": "route contract 6 has explicit discovery policy",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "private route contract 6 must be authenticated or permission-required, noindex, and excluded from the sitemap",
+      "name": "route contract 6 keeps private routes out of search",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 7 must include route, purpose, primary_state, empty_state, error_state, actions, and acceptance_criteria",
+      "name": "route contract 7 has complete behavior",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 7 must declare surface, access_policy, index_policy, include_in_sitemap, and canonical_path",
+      "name": "route contract 7 has explicit discovery policy",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "private route contract 7 must be authenticated or permission-required, noindex, and excluded from the sitemap",
+      "name": "route contract 7 keeps private routes out of search",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 8 must include route, purpose, primary_state, empty_state, error_state, actions, and acceptance_criteria",
+      "name": "route contract 8 has complete behavior",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "route contract 8 must declare surface, access_policy, index_policy, include_in_sitemap, and canonical_path",
+      "name": "route contract 8 has explicit discovery policy",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "private route contract 8 must be authenticated or permission-required, noindex, and excluded from the sitemap",
+      "name": "route contract 8 keeps private routes out of search",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "comprehensive_product.auth_lifecycle must define session_storage, route_persistence, logout_behavior, and verification_behavior",
+      "name": "auth lifecycle is explicit",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "comprehensive_product.state_model must define source_of_truth, persisted_entities, optimistic_updates, and reload_behavior",
+      "name": "state model is explicit",
+      "passed": true,
+      "severity": "error"
+    },
+    {
+      "message": "comprehensive_product.feedback_loop must define capture_points, triage_destination, and iteration_metric",
+      "name": "feedback loop is explicit",
+      "passed": true,
+      "severity": "error"
+    }
+  ],
+  "created_at": "2026-08-29T23:55:02+00:00",
+  "errors": [],
+  "passed": true,
+  "product_id": "quote-intake-demo",
+  "schema_version": "product_factory.product_spec.v1",
+  "warnings": []
+}

@@ -1,0 +1,47 @@
+{
+  "context": {
+    "contract_ref": "organic-discovery.json",
+    "preview_command": "npm run dev -- --hostname 127.0.0.1 --port 4173",
+    "preview_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/frontend",
+    "preview_url": "http://127.0.0.1:4173",
+    "required": true,
+    "review_ref": "customer-clarity-review.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "customer_clarity_review_agent",
+    "allowed_scope": [
+      "customer-clarity-review.json",
+      "copy-review-evidence/**",
+      "organic-discovery.json"
+    ],
+    "definition_of_done": [
+      "Read each rendered page as a first-time customer and write a one-sentence plain-language summary of what it offers.",
+      "Reject unexplained product, legal, technical, workflow, or metaphorical terms; familiar customer language is allowed.",
+      "Reject headings or calls to action that require internal product vocabulary to understand.",
+      "Reject sentences that sound impressive but cannot be paraphrased accurately after one read.",
+      "Require the customer benefit before implementation details and name the exact confusing phrase in every issue.",
+      "Write the review artifact with schema_version product_factory.public_copy_review.v1, review_type customer_clarity, reviewer_agent_id customer_clarity_review_agent, status verified, the current product_id and build_id, and reviewed_routes containing every declared public route exactly once.",
+      "Review every declared public route at desktop and mobile widths in its rendered context.",
+      "When the reviewer sandbox cannot bind a preview port, use retained root-managed screenshots only when copy-review-evidence records the exact route, viewport, and matching rendered title and heading.",
+      "Record one route_reviews entry per public route with route, plain_language_summary, customer_outcome, unexplained_terms, and passed.",
+      "Set decision to approved only when every route passes, unexplained_terms is empty, checks_passed is non-empty, and checks_failed and issues are empty."
+    ],
+    "dependencies": [
+      "product_experience_implementation_agent",
+      "launch_distribution_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "frontend source, product behavior, or strategy source; the independent reviewer reports defects but does not repair its own findings",
+      "approving copy merely because it is grammatical, distinctive, or keyword-rich",
+      "inventing customer evidence, performance, reviews, rankings, revenue, or legal conclusions",
+      "treating an undefined product metaphor as familiar customer language",
+      "raw secret persistence"
+    ],
+    "objective": "Independently verify that a busy first-time customer can understand every public page on the first read, without knowing the product's internal vocabulary.",
+    "task_id": "review-quote-intake-demo-customer-clarity-review",
+    "title": "Review QuoteRivet for first-read customer clarity"
+  }
+}

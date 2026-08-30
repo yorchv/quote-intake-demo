@@ -1,0 +1,490 @@
+{
+  "growth_plan_ref": "organic-growth-plan.json",
+  "privacy_rule": "Authentication and server-side authorization protect private content; robots.txt is crawl guidance only.",
+  "product_id": "quote-intake-demo",
+  "required": true,
+  "review_ref": "organic-discovery-review.json",
+  "schema_version": "product_factory.organic_discovery_package.v1",
+  "status": "strategy_verified",
+  "strategy": {
+    "claims": [
+      {
+        "claim_id": "claim_intake_queue",
+        "evidence_refs": [
+          "source_architecture_brief",
+          "source_jobber_request_basics",
+          "source_google_local_services_leads"
+        ],
+        "statement": "Bring estimate requests from calls, messages, email, and web forms into one review queue.",
+        "status": "approved"
+      },
+      {
+        "claim_id": "claim_quote_ready_package",
+        "evidence_refs": [
+          "source_architecture_brief",
+          "source_jobber_request_basics"
+        ],
+        "statement": "Collect site details, photos, measurements, and scope notes before recording a quote-ready decision.",
+        "status": "approved"
+      },
+      {
+        "claim_id": "claim_focused_companion",
+        "evidence_refs": [
+          "source_architecture_brief",
+          "source_housecallpro_feature_scope"
+        ],
+        "statement": "Use a focused quote-intake workspace alongside existing accounting and dispatch software.",
+        "status": "approved"
+      },
+      {
+        "claim_id": "claim_faster_follow_up",
+        "evidence_refs": [
+          "source_google_local_services_leads"
+        ],
+        "statement": "A complete intake record may shorten the time from first contact to a useful follow-up.",
+        "status": "hypothesis"
+      },
+      {
+        "claim_id": "claim_close_rate_lift",
+        "evidence_refs": [],
+        "statement": "Quote Intake Demo increases close rates or revenue by a stated amount.",
+        "status": "prohibited"
+      },
+      {
+        "claim_id": "claim_never_miss_lead",
+        "evidence_refs": [],
+        "statement": "Quote Intake Demo guarantees that a contractor never misses a lead.",
+        "status": "prohibited"
+      },
+      {
+        "claim_id": "claim_replaces_staff",
+        "evidence_refs": [],
+        "statement": "Quote Intake Demo replaces office staff, accounting software, or dispatch software.",
+        "status": "prohibited"
+      }
+    ],
+    "crawler_policy": {
+      "gptbot": "disallow",
+      "llms_txt": "optional_not_a_gate",
+      "oai_searchbot": "allow_public_only",
+      "search_crawlers": "allow_public_only"
+    },
+    "distribution": {
+      "channels": [
+        "Trade-association and local contractor education",
+        "Search-led operational guides",
+        "Owner and office-coordinator interviews"
+      ],
+      "earned_evidence_targets": [
+        "Attributable references from contractor associations or office-operations educators to an original intake checklist",
+        "Consent-backed customer interviews that document current intake channels, handoff failures, and exact language",
+        "Verified customer reviews only after real product use, with no incentive tied to sentiment",
+        "Original benchmark data only after a documented sample, method, and observation window exist"
+      ],
+      "forbidden_tactics": [
+        "fabricated reviews",
+        "paid or automated link schemes",
+        "inauthentic mentions"
+      ]
+    },
+    "evidence_sources": [
+      {
+        "insight": "The architecture limits the product to inbound request qualification, estimator assignment, site evidence, scope notes, customer visibility, and an explicit quote-ready decision. It explicitly avoids replacing accounting or dispatch.",
+        "observed_at": "2026-08-29",
+        "source_id": "source_architecture_brief",
+        "source_ref": "artifacts/architecture_quote-intake-demo_2ef739047aad/product-architecture/architecture.json",
+        "source_type": "product_architecture"
+      },
+      {
+        "insight": "Jobber's page, updated July 10, 2026, documents requests arriving through websites, client portals, phone calls, email, and in-person conversations. Its intake forms can collect job information, photos, and measurements, then lead to follow-up, an on-site assessment, a quote, or a job.",
+        "observed_at": "2026-08-29",
+        "source_id": "source_jobber_request_basics",
+        "source_ref": "https://help.getjobber.com/en/articles/request-basics/",
+        "source_type": "primary_vendor_documentation"
+      },
+      {
+        "insight": "Google Local Services documents inbound call and message leads. Message leads include the customer's name, ZIP code, job details, and phone number, and Google exposes response-time estimates after enough message leads.",
+        "observed_at": "2026-08-29",
+        "source_id": "source_google_local_services_leads",
+        "source_ref": "https://support.google.com/localservices/answer/6224859?hl=en",
+        "source_type": "primary_platform_documentation"
+      },
+      {
+        "insight": "Housecall Pro presents the broad field-service alternative as a suite spanning calls, scheduling, pipeline, estimating, dispatch, invoicing, payments, customer management, and accounting integration.",
+        "observed_at": "2026-08-29",
+        "source_id": "source_housecallpro_feature_scope",
+        "source_ref": "https://www.housecallpro.com/features/",
+        "source_type": "primary_vendor_product_page"
+      }
+    ],
+    "measurement": {
+      "diagnostic_metrics": [
+        "public-page visitor to qualified estimate-request start rate by intent cluster",
+        "qualified estimate-request completion rate",
+        "median time from first request capture to first human response",
+        "share of accepted requests missing required site details, photos, or scope notes",
+        "share of site visits assigned with an accountable estimator"
+      ],
+      "outcome_metrics": [
+        "qualified estimate requests created",
+        "quote-ready packages completed",
+        "median time from qualified request to quote-ready decision",
+        "quotes issued from quote-ready packages",
+        "won work attributable to a completed quote-ready package"
+      ],
+      "primary_conversion_event": "A prospective buyer submits a qualified estimate request with contact details, service location, requested work, and consent to follow up.",
+      "review_cadence": "Review diagnostic metrics weekly after launch and commercial outcomes monthly only when identity, consent, and attribution are available.",
+      "sources": [
+        "consented product analytics events",
+        "product request, site-visit, and quote-ready records",
+        "attributed quote and won-work records from an operator-approved integration or manual reconciliation",
+        "Google Search Console and Bing Webmaster Tools after ownership is verified",
+        "crawler and server logs that exclude secrets and private content"
+      ]
+    },
+    "positioning": {
+      "buying_trigger": "The owner or office coordinator is re-entering estimate requests from calls, messages, email, and forms, then chasing missing site details before an estimator can act.",
+      "category": "Quote-intake and site-visit coordination software for small residential service contractors",
+      "differentiators": [
+        "A narrow intake-to-quote-ready workflow that complements, rather than replaces, accounting and dispatch systems.",
+        "An explicit quote-ready decision tied to site details, photos, measurements, scope notes, and an accountable estimator.",
+        "A customer-visible request package that keeps the source request and later field evidence connected before quoting."
+      ],
+      "ideal_customer": "The office coordinator or owner who qualifies incoming work and schedules estimators without replacing the company's accounting or dispatch system",
+      "job_to_be_done": "Turn each inbound service request into a complete, assigned, customer-visible quote package with site details, photos, scope notes, and an explicit quote-ready decision",
+      "objections": [
+        "We already use field-service software, spreadsheets, email, and text messages; another system may create duplicate entry.",
+        "Our request types need different questions, photos, measurements, and site-visit rules; a generic form may not capture enough detail.",
+        "Customers may still call or text, so an online form alone will not create one reliable queue.",
+        "A quote-ready label is not useful unless the estimator trusts the evidence and can see who made the decision."
+      ],
+      "primary_alternative": "Keep calls, texts, email, and web-form submissions in their existing channels, then coordinate qualification and estimator handoff through memory, notes, spreadsheets, or the intake features of a full field-service platform.",
+      "value_proposition": "Give a small residential service contractor one focused path from scattered estimate request to an assigned, evidence-backed quote-ready package, while leaving accounting and dispatch in the systems the company already uses."
+    },
+    "public_pages": [
+      {
+        "access_policy": "anonymous",
+        "audience": "The person at a small residential service contractor who qualifies estimate requests and schedules estimators.",
+        "canonical_path": "/",
+        "claim_refs": [
+          "claim_intake_queue",
+          "claim_quote_ready_package",
+          "claim_focused_companion"
+        ],
+        "cta_href": "/request",
+        "cta_label": "Start an estimate request",
+        "description": "Organize estimate requests, site details, and accountable estimator handoffs in one focused path without replacing accounting or dispatch.",
+        "include_in_sitemap": true,
+        "index_policy": "index",
+        "internal_links": [
+          "/estimate-request-intake",
+          "/quote-ready-checklist",
+          "/site-visit-handoff",
+          "/works-with-your-tools"
+        ],
+        "last_material_change": "2026-08-29",
+        "page_type": "home",
+        "primary_heading": "Send the job details once and see who will review them next.",
+        "proof_refs": [
+          "source_architecture_brief",
+          "source_jobber_request_basics",
+          "source_google_local_services_leads",
+          "source_housecallpro_feature_scope"
+        ],
+        "route": "/",
+        "search_intent": "Evaluate a focused quote-intake and site-visit coordination product for a small residential service contractor.",
+        "sections": [
+          {
+            "body": "Capture the original channel, contact details, service location, requested work, consent, and missing information before a coordinator accepts, clarifies, or declines the request.",
+            "heading": "One queue for the requests you already receive"
+          },
+          {
+            "body": "Connect the accountable estimator, visit window, photos, measurements, scope notes, exclusions, and unresolved questions to the same request record before readiness review.",
+            "heading": "Keep field evidence attached to the request"
+          },
+          {
+            "body": "QuoteRivet ends at an attributable quote-ready package and handoff. It does not infer that a quote was issued, accepted, won, or paid, and it does not replace accounting or dispatch software.",
+            "heading": "Leave quotes, accounting, and dispatch where they are"
+          }
+        ],
+        "structured_data_types": [
+          "Organization",
+          "WebSite",
+          "WebPage",
+          "SoftwareApplication"
+        ],
+        "summary": "QuoteRivet gives a small residential service contractor one review path from an incoming call, message, email, or form to an assigned package with site facts and an explicit human quote-ready decision.",
+        "surface": "public_marketing",
+        "title": "QuoteRivet | Estimate Request Intake for Contractors"
+      },
+      {
+        "access_policy": "anonymous",
+        "audience": "An office coordinator who reviews estimate requests arriving through several channels.",
+        "canonical_path": "/estimate-request-intake",
+        "claim_refs": [
+          "claim_intake_queue"
+        ],
+        "cta_href": "/request",
+        "cta_label": "Start an estimate request",
+        "description": "Use one review queue for estimate requests from calls, messages, email, and forms while preserving the original source and human decision.",
+        "include_in_sitemap": true,
+        "index_policy": "index",
+        "internal_links": [
+          "/",
+          "/quote-ready-checklist",
+          "/site-visit-handoff"
+        ],
+        "last_material_change": "2026-08-29",
+        "page_type": "how_it_works",
+        "primary_heading": "Organize every estimate request before assignment",
+        "proof_refs": [
+          "source_architecture_brief",
+          "source_jobber_request_basics",
+          "source_google_local_services_leads"
+        ],
+        "route": "/estimate-request-intake",
+        "search_intent": "Find a practical way to capture and qualify estimate requests that arrive through calls, messages, email, and forms.",
+        "sections": [
+          {
+            "body": "Record whether the request arrived by call, message, email, web form, or in person. Keep that source after corrections, and ask for the contact method, service location, requested work, timing, and follow-up consent still missing.",
+            "heading": "Preserve the source, then fill the gaps"
+          },
+          {
+            "body": "A coordinator reviews service fit, completeness, duplicates, and policy exceptions. The request moves to clarification, supported intake, owner review, or a retained decline reason.",
+            "heading": "Qualify with an accountable decision"
+          },
+          {
+            "body": "Receiving a request does not promise a visit, quote, schedule, price, or acceptance. The next step stays visible with its accountable owner.",
+            "heading": "Do not promise an outcome at intake"
+          }
+        ],
+        "structured_data_types": [
+          "WebPage",
+          "Article",
+          "BreadcrumbList"
+        ],
+        "summary": "This intake guide shows which source facts to preserve, which minimum details to collect, and where a named person must decide whether the request can move forward.",
+        "surface": "public_marketing",
+        "title": "Estimate request intake for contractors | QuoteRivet"
+      },
+      {
+        "access_policy": "anonymous",
+        "audience": "An office coordinator preparing a complete request for an estimator's review.",
+        "canonical_path": "/quote-ready-checklist",
+        "claim_refs": [
+          "claim_quote_ready_package"
+        ],
+        "cta_href": "/request",
+        "cta_label": "Start an estimate request",
+        "description": "Check contact details, job information, photos, measurements, site facts, and open questions before a human quote-ready decision.",
+        "include_in_sitemap": true,
+        "index_policy": "index",
+        "internal_links": [
+          "/",
+          "/estimate-request-intake",
+          "/site-visit-handoff"
+        ],
+        "last_material_change": "2026-08-29",
+        "page_type": "resource",
+        "primary_heading": "Check the details before preparing a quote",
+        "proof_refs": [
+          "source_architecture_brief",
+          "source_jobber_request_basics"
+        ],
+        "route": "/quote-ready-checklist",
+        "search_intent": "Learn which details to collect before deciding whether a request needs an on-site assessment or can move toward a quote.",
+        "sections": [
+          {
+            "body": "Confirm the contact method and consent, service location, requested work, timing, availability, access instructions, and any missing or contradictory answers.",
+            "heading": "Start with the requester's facts"
+          },
+          {
+            "body": "Attach the accountable estimator, confirmed visit facts, photos, measurements, observations, scope notes, exclusions, assumptions, access limits, and unresolved questions with their current versions.",
+            "heading": "Add current site evidence when the work needs it"
+          },
+          {
+            "body": "The reviewer checks the fixed criteria and records quote-ready or not-ready with evidence and a reason. Quote-ready means the package passed review; it does not mean a quote was issued or accepted.",
+            "heading": "Record the decision and its limits"
+          }
+        ],
+        "structured_data_types": [
+          "WebPage",
+          "Article",
+          "BreadcrumbList"
+        ],
+        "summary": "Use this checklist to separate initial request facts from field evidence and to show exactly what remains unresolved before an estimator records a quote-ready or not-ready decision.",
+        "surface": "public_marketing",
+        "title": "Estimate details checklist for service requests | QuoteRivet"
+      },
+      {
+        "access_policy": "anonymous",
+        "audience": "An office coordinator arranging an estimate site visit and handing the request to an accountable estimator.",
+        "canonical_path": "/site-visit-handoff",
+        "claim_refs": [
+          "claim_quote_ready_package"
+        ],
+        "cta_href": "/request",
+        "cta_label": "Start an estimate request",
+        "description": "Coordinate a visit window, accountable estimator, field checklist, and current evidence before quote-readiness review.",
+        "include_in_sitemap": true,
+        "index_policy": "index",
+        "internal_links": [
+          "/",
+          "/estimate-request-intake",
+          "/quote-ready-checklist"
+        ],
+        "last_material_change": "2026-08-29",
+        "page_type": "use_case",
+        "primary_heading": "Keep every site-visit detail with the estimate request",
+        "proof_refs": [
+          "source_architecture_brief",
+          "source_jobber_request_basics",
+          "source_housecallpro_feature_scope"
+        ],
+        "route": "/site-visit-handoff",
+        "search_intent": "Coordinate the site visit and accountable estimator needed to complete a quote package.",
+        "sections": [
+          {
+            "body": "Offer approved visit windows, record how the requester received them, retain acceptance or correction, and confirm the accountable estimator and evidence checklist.",
+            "heading": "Confirm a permitted window and a named estimator"
+          },
+          {
+            "body": "The estimator records arrival and completion facts, photos, measurements, observations, scope notes, exclusions, assumptions, access limits, and unresolved questions with attributable sources.",
+            "heading": "Capture what happened at the site"
+          },
+          {
+            "body": "No access, changed scope, missing evidence, or a requester dispute keeps the package out of readiness review until the responsible person records a correction or owner decision.",
+            "heading": "Route incomplete work to a named correction"
+          }
+        ],
+        "structured_data_types": [
+          "WebPage",
+          "Article",
+          "BreadcrumbList"
+        ],
+        "summary": "This handoff pattern keeps the requester-visible scope, confirmed visit window, assigned estimator, access conditions, and field checklist together without treating scheduling as a quote-ready decision.",
+        "surface": "public_marketing",
+        "title": "Site-visit handoff for estimates | QuoteRivet"
+      },
+      {
+        "access_policy": "anonymous",
+        "audience": "An owner deciding whether to add focused quote-intake software or replace the company's field-service stack.",
+        "canonical_path": "/works-with-your-tools",
+        "claim_refs": [
+          "claim_focused_companion"
+        ],
+        "cta_href": "/request",
+        "cta_label": "Start an estimate request",
+        "description": "See where QuoteRivet fits beside accounting and dispatch: request review, site evidence, readiness decisions, and a bounded handoff.",
+        "include_in_sitemap": true,
+        "index_policy": "index",
+        "internal_links": [
+          "/",
+          "/estimate-request-intake",
+          "/quote-ready-checklist",
+          "/site-visit-handoff"
+        ],
+        "last_material_change": "2026-08-29",
+        "page_type": "comparison",
+        "primary_heading": "Keep estimate requests organized alongside your current tools",
+        "proof_refs": [
+          "source_architecture_brief",
+          "source_housecallpro_feature_scope"
+        ],
+        "route": "/works-with-your-tools",
+        "search_intent": "Decide whether a focused intake companion is preferable to replacing the company's full field-service stack.",
+        "sections": [
+          {
+            "body": "The product keeps the source request, qualification decision, accountable estimator, visit record, current evidence, quote-readiness decision, and handoff receipt connected.",
+            "heading": "What QuoteRivet owns"
+          },
+          {
+            "body": "Dispatch schedules, issued quotes, accounting entries, invoices, payments, and won-work records remain outside this product unless a later approved integration defines identity, consent, mapping, reconciliation, and rollback.",
+            "heading": "What remains in your existing systems"
+          },
+          {
+            "body": "A company seeking one system for scheduling, dispatch, estimating, invoicing, payments, customer management, and accounting integration should evaluate a full field-service suite against those needs.",
+            "heading": "When a broader suite may fit better"
+          }
+        ],
+        "structured_data_types": [
+          "WebPage",
+          "SoftwareApplication",
+          "BreadcrumbList"
+        ],
+        "summary": "QuoteRivet covers request qualification, estimator assignment, site evidence, quote-readiness review, and package handoff. Accounting, dispatch, invoicing, payments, and won-work records stay with their existing owners.",
+        "surface": "public_marketing",
+        "title": "Focused quote intake beside your current tools | QuoteRivet"
+      }
+    ],
+    "query_clusters": [
+      {
+        "cluster_id": "organize_inbound_estimate_requests",
+        "confidence": "medium",
+        "intent": "solution_discovery",
+        "priority": "high",
+        "queries": [
+          "organize estimate requests from phone calls and emails",
+          "capture job details from message leads",
+          "review service requests before scheduling"
+        ],
+        "target_route": "/estimate-request-intake"
+      },
+      {
+        "cluster_id": "collect_details_before_estimate",
+        "confidence": "medium",
+        "intent": "problem_education",
+        "priority": "high",
+        "queries": [
+          "what job information to collect before an estimate",
+          "photos and measurements for a service request",
+          "contact details needed for an estimate request"
+        ],
+        "target_route": "/quote-ready-checklist"
+      },
+      {
+        "cluster_id": "schedule_estimate_site_visit",
+        "confidence": "medium",
+        "intent": "implementation",
+        "priority": "medium",
+        "queries": [
+          "schedule an on-site assessment for an estimate",
+          "assign a team member to an estimate visit",
+          "organize site visit details before quoting"
+        ],
+        "target_route": "/site-visit-handoff"
+      },
+      {
+        "cluster_id": "focused_intake_vs_field_service_suite",
+        "confidence": "medium",
+        "intent": "comparison",
+        "priority": "medium",
+        "queries": [
+          "quote intake software vs field service management",
+          "estimate intake without replacing dispatch software",
+          "estimate request workflow with QuickBooks integration"
+        ],
+        "target_route": "/works-with-your-tools"
+      }
+    ],
+    "research_status": "researched",
+    "schema_version": "product_factory.organic_discovery.v1",
+    "verification": {
+      "checks_failed": [],
+      "checks_passed": [
+        "retained evidence records are complete and external primary-source observations were independently rechecked",
+        "approved claims and page proof references resolve, and unsupported outcome claims are not approved",
+        "query intent coverage, page uniqueness, canonical paths, internal links, and route-collision controls pass",
+        "private and owner routes are noindex and excluded from the sitemap, while every sitemap page is anonymous, public, indexable, and canonical",
+        "structured-data declarations match page purposes and crawler policy separates search discovery from model-training crawl",
+        "distribution controls reject fabricated reviews, link schemes, and inauthentic mentions",
+        "measurement remains tied to qualified requests, retained operational evidence, consent, identity, and attribution without invented results"
+      ],
+      "schema_version": "product_factory.organic_discovery_strategy_verification.v1",
+      "status": "verified",
+      "verified_by": "organic_discovery_verifier_agent"
+    }
+  },
+  "strategy_schema_version": "product_factory.organic_discovery.v1",
+  "verification_command": "python3 scripts/verify-organic-discovery.py"
+}

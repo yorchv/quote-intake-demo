@@ -1,0 +1,27 @@
+# Dependencies and build output
+node_modules/
+.next/
+dist/
+build/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Runtime data
+*.sqlite
+*.sqlite3
+*.db
+*.log
+
+# Secrets
+.env
+.env.*
+*.env
+*.pem
+secrets/
+
+# Local tools
+.DS_Store
+.idea/
+.vscode/

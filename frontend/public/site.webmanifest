@@ -1,0 +1,21 @@
+{
+  "background_color": "#fff7e8",
+  "description": "QuoteRivet gives a small residential service contractor one review path from an incoming call, message, email, or form to an assigned package with site facts...",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "32x32",
+      "src": "/favicon-32x32.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "180x180",
+      "src": "/apple-touch-icon.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "QuoteRivet",
+  "short_name": "QuoteRivet",
+  "start_url": "/",
+  "theme_color": "#151515"
+}

@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+Disallow: /activity
+Disallow: /api
+Disallow: /assignments
+Disallow: /exceptions
+Disallow: /login
+Disallow: /owner
+Disallow: /request
+Disallow: /requests/
+Disallow: /settings
+Disallow: /site-visits/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /activity
+Disallow: /api
+Disallow: /assignments
+Disallow: /exceptions
+Disallow: /login
+Disallow: /owner
+Disallow: /request
+Disallow: /requests/
+Disallow: /settings
+Disallow: /site-visits/
+
+User-agent: GPTBot
+Disallow: /
+Sitemap: http://localhost:3000/sitemap.xml

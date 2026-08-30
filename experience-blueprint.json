@@ -1,0 +1,1218 @@
+{
+  "agent_interface": {
+    "handoff_summary_fields": [
+      "route_id",
+      "intent_id",
+      "tenant_id",
+      "actor_id",
+      "actor_persona_ref",
+      "service_request_id",
+      "current_state",
+      "expected_revision",
+      "command_ref",
+      "success_evidence_refs",
+      "open_blockers",
+      "next_accountable_persona_ref"
+    ],
+    "operating_principle": "The agent may organize visible facts and explain the next valid command. It must stop at permission, identity, policy, evidence, revision, access, or human-decision boundaries. Qualification, assignment, quote readiness, exception decisions, and handoff acknowledgement remain attributable human commands.",
+    "route_intents": [
+      {
+        "command_refs": [
+          "cmd_service_request_intake_and_qualification_requester_submits_request_v1",
+          "cmd_service_request_intake_and_qualification_requester_corrects_request_v1",
+          "cmd_request_evidence_control_submit_evidence_version_v1",
+          "cmd_site_visit_and_scope_capture_requester_accepts_visit_window_v1",
+          "cmd_site_visit_and_scope_capture_requester_declines_visit_windows_v1"
+        ],
+        "escalation_conditions": [
+          "the requester disputes staff-visible facts",
+          "restricted information is requested",
+          "no permitted correction command is available"
+        ],
+        "handoff_fields": [
+          "service_request_id",
+          "current_state",
+          "missing_or_contradictory_fields",
+          "next_action",
+          "event_id"
+        ],
+        "intent": "submit_or_correct_my_request",
+        "intent_id": "submit_or_correct_my_request",
+        "required_context": [
+          "tenant_id",
+          "actor_id",
+          "scoped_request_capability",
+          "service_request_id",
+          "expected_revision",
+          "source_channel",
+          "follow_up_consent",
+          "contact_details",
+          "service_location",
+          "requested_work"
+        ],
+        "route": "/request",
+        "route_id": "requester_intake",
+        "stop_conditions": [
+          "request capability is missing or invalid",
+          "follow-up consent is absent",
+          "required intake fields are incomplete",
+          "expected revision is stale"
+        ],
+        "success_evidence": [
+          "returned service_request_id",
+          "new revision",
+          "captured state",
+          "service_request.created.v1 or service_request.corrected.v1 event id"
+        ]
+      },
+      {
+        "command_refs": [
+          "cmd_service_request_intake_and_qualification_coordinator_captures_request_v1",
+          "cmd_service_request_intake_and_qualification_coordinator_marks_clarification_required_v1",
+          "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+          "cmd_service_request_intake_and_qualification_coordinator_routes_owner_review_v1"
+        ],
+        "escalation_conditions": [
+          "unsupported work requires owner authority",
+          "risk or service-area policy conflicts",
+          "clarification remains unresolved past its policy target"
+        ],
+        "handoff_fields": [
+          "service_request_id",
+          "source_channel",
+          "current_state",
+          "qualification_decision_id",
+          "missing_or_contradictory_fields",
+          "next_accountable_persona_ref"
+        ],
+        "intent": "capture_and_route_incoming_request",
+        "intent_id": "capture_and_route_incoming_request",
+        "required_context": [
+          "tenant_id",
+          "actor_id",
+          "office_coordinator permission",
+          "source_channel",
+          "follow_up_consent",
+          "service_request_id",
+          "expected_revision",
+          "qualification policy ref",
+          "current intake state"
+        ],
+        "route": "/requests",
+        "route_id": "intake_queue",
+        "stop_conditions": [
+          "identity or tenant scope is unresolved",
+          "required qualification facts are missing",
+          "policy version is inactive",
+          "expected revision is stale"
+        ],
+        "success_evidence": [
+          "request revision",
+          "qualification decision ref when recorded",
+          "new intake state",
+          "attributable workflow event id"
+        ]
+      },
+      {
+        "command_refs": [
+          "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+          "cmd_qualified_request_assignment_prioritize_supported_request_v1",
+          "cmd_request_evidence_control_estimator_starts_evidence_review_v1",
+          "cmd_operational_exception_resolution_open_operational_exception_v1"
+        ],
+        "escalation_conditions": [
+          "the next action requires owner authority",
+          "evidence conflicts with requester-visible scope",
+          "privacy or safety facts restrict access"
+        ],
+        "handoff_fields": [
+          "service_request_id",
+          "current_state",
+          "active_entity_ref",
+          "active_decision_ref",
+          "open_exception_ids",
+          "next_accountable_persona_ref"
+        ],
+        "intent": "move_one_request_to_an_accountable_next_step",
+        "intent_id": "move_one_request_to_an_accountable_next_step",
+        "required_context": [
+          "tenant_id",
+          "actor_id",
+          "actor permissions",
+          "service_request_id",
+          "expected revisions",
+          "current request, qualification, assignment, evidence, visit, exception, readiness, and handoff refs"
+        ],
+        "route": "/requests/:service_request_id",
+        "route_id": "request_dossier",
+        "stop_conditions": [
+          "more than one primary transition is simultaneously selected",
+          "a required entity version is missing",
+          "command permission is absent",
+          "a material source version changed"
+        ],
+        "success_evidence": [
+          "updated state on the active dossier seam",
+          "attributable event id",
+          "next action owner",
+          "unchanged source-request lineage"
+        ]
+      },
+      {
+        "command_refs": [
+          "cmd_qualified_request_assignment_prioritize_supported_request_v1",
+          "cmd_qualified_request_assignment_assign_eligible_estimator_v1",
+          "cmd_qualified_request_assignment_estimator_acknowledges_assignment_v1",
+          "cmd_qualified_request_assignment_estimator_returns_assignment_v1",
+          "cmd_qualified_request_assignment_coordinator_reassigns_returned_request_v1"
+        ],
+        "escalation_conditions": [
+          "no eligible estimator can accept",
+          "the request is repeatedly returned",
+          "assignment closure needs owner authority"
+        ],
+        "handoff_fields": [
+          "service_request_id",
+          "estimator_assignment_id",
+          "priority",
+          "assigned_estimator_actor_id",
+          "assignment_state",
+          "return_reason"
+        ],
+        "intent": "assign_and_acknowledge_supported_work",
+        "intent_id": "assign_and_acknowledge_supported_work",
+        "required_context": [
+          "tenant_id",
+          "actor_id",
+          "service_request_id",
+          "estimator_assignment_id",
+          "current assignment state",
+          "priority policy ref",
+          "eligible estimator facts",
+          "expected revision"
+        ],
+        "route": "/assignments",
+        "route_id": "assignment_board",
+        "stop_conditions": [
+          "the request is not supported",
+          "no eligible estimator is verified",
+          "capacity facts are stale",
+          "expected revision is stale"
+        ],
+        "success_evidence": [
+          "estimator_assignment_id",
+          "new assignment state",
+          "accountable estimator actor id when assigned",
+          "assignment workflow event id"
+        ]
+      },
+      {
+        "command_refs": [
+          "cmd_site_visit_and_scope_capture_offer_visit_windows_v1",
+          "cmd_site_visit_and_scope_capture_coordinator_confirms_visit_v1",
+          "cmd_site_visit_and_scope_capture_estimator_starts_visit_v1",
+          "cmd_site_visit_and_scope_capture_estimator_completes_field_record_v1",
+          "cmd_site_visit_and_scope_capture_estimator_routes_complete_visit_v1",
+          "cmd_site_visit_and_scope_capture_estimator_records_no_access_v1"
+        ],
+        "escalation_conditions": [
+          "no access or unsafe conditions stop the visit",
+          "a material scope difference needs correction",
+          "owner authority is required to cancel or authorize rescheduling"
+        ],
+        "handoff_fields": [
+          "service_request_id",
+          "site_visit_id",
+          "visit_state",
+          "evidence_version_refs",
+          "scope_differences",
+          "unresolved_questions",
+          "next_action"
+        ],
+        "intent": "schedule_visit_and_capture_field_scope",
+        "intent_id": "schedule_visit_and_capture_field_scope",
+        "required_context": [
+          "tenant_id",
+          "actor_id",
+          "site_visit_id",
+          "service_request_id",
+          "estimator_assignment_id",
+          "current visit state",
+          "evidence checklist version",
+          "access and safety status",
+          "expected revision"
+        ],
+        "route": "/site-visits/:site_visit_id",
+        "route_id": "site_visit_workbench",
+        "stop_conditions": [
+          "assigned estimator identity does not match",
+          "access or safety is blocked",
+          "required evidence is incomplete",
+          "scope conflict is unresolved"
+        ],
+        "success_evidence": [
+          "site_visit_id",
+          "new visit state",
+          "immutable evidence refs",
+          "scope notes and limitations",
+          "site-visit workflow event id"
+        ]
+      },
+      {
+        "command_refs": [
+          "cmd_quote_readiness_review_estimator_starts_readiness_review_v1",
+          "cmd_quote_readiness_review_estimator_records_quote_ready_v1",
+          "cmd_quote_readiness_review_estimator_records_not_ready_v1",
+          "cmd_quote_readiness_review_estimator_restarts_corrected_review_v1",
+          "cmd_quote_readiness_review_estimator_invalidates_ready_decision_v1"
+        ],
+        "escalation_conditions": [
+          "sensitive decision details need restriction",
+          "policy authority is unclear",
+          "the package remains not ready after its named correction"
+        ],
+        "handoff_fields": [
+          "service_request_id",
+          "quote_readiness_decision_id",
+          "decision",
+          "failed_criteria",
+          "evidence_refs",
+          "limitations",
+          "next_action"
+        ],
+        "intent": "record_an_evidence_backed_readiness_decision",
+        "intent_id": "record_an_evidence_backed_readiness_decision",
+        "required_context": [
+          "tenant_id",
+          "actor_id",
+          "service_request_id",
+          "estimator_assignment_id",
+          "quote_readiness_decision_id",
+          "criteria version",
+          "current entity versions",
+          "usable evidence refs",
+          "open exceptions",
+          "expected revision"
+        ],
+        "route": "/requests/:service_request_id/readiness",
+        "route_id": "readiness_seam",
+        "stop_conditions": [
+          "the actor is not the acknowledged assigned estimator",
+          "a required criterion lacks evidence",
+          "an unresolved blocker remains",
+          "a cited source version changed"
+        ],
+        "success_evidence": [
+          "quote_readiness_decision_id",
+          "criteria version",
+          "per-criterion results",
+          "decision actor and time",
+          "cited evidence refs",
+          "quote-readiness event id"
+        ]
+      },
+      {
+        "command_refs": [
+          "cmd_quote_ready_handoff_estimator_assembles_handoff_v1",
+          "cmd_quote_ready_handoff_estimator_transfers_handoff_v1",
+          "cmd_quote_ready_handoff_recipient_acknowledgement_recorded_v1",
+          "cmd_quote_ready_handoff_recipient_rejection_recorded_v1",
+          "cmd_quote_ready_handoff_recipient_access_failure_recorded_v1",
+          "cmd_quote_ready_handoff_coordinator_corrects_recipient_access_v1"
+        ],
+        "escalation_conditions": [
+          "the recipient rejects the package",
+          "access fails without an authorized alternative",
+          "material evidence or scope changes after transfer"
+        ],
+        "handoff_fields": [
+          "service_request_id",
+          "quote_ready_handoff_id",
+          "package_version",
+          "recipient_actor_id",
+          "access_scope",
+          "acknowledgement_status",
+          "open_obligations"
+        ],
+        "intent": "transfer_and_confirm_the_current_quote_ready_package",
+        "intent_id": "transfer_and_confirm_the_current_quote_ready_package",
+        "required_context": [
+          "tenant_id",
+          "actor_id",
+          "service_request_id",
+          "current quote_readiness_decision_id",
+          "quote_ready_handoff_id",
+          "package version",
+          "recipient identity",
+          "recipient authority",
+          "access scope",
+          "open obligations",
+          "expected revision"
+        ],
+        "route": "/requests/:service_request_id/handoff",
+        "route_id": "handoff_dock",
+        "stop_conditions": [
+          "the readiness decision is not current and quote-ready",
+          "recipient authority is unverified",
+          "access scope is invalid",
+          "the package version changed"
+        ],
+        "success_evidence": [
+          "quote_ready_handoff_id",
+          "immutable package version",
+          "current readiness decision ref",
+          "transfer or acknowledgement event id",
+          "remaining obligations"
+        ]
+      },
+      {
+        "command_refs": [
+          "cmd_operational_exception_resolution_open_operational_exception_v1",
+          "cmd_operational_exception_resolution_escalate_operational_exception_v1",
+          "cmd_operational_exception_resolution_owner_decides_exception_v1",
+          "cmd_operational_exception_resolution_owner_closes_resolved_exception_v1",
+          "cmd_operational_exception_resolution_owner_reopens_exception_v1"
+        ],
+        "escalation_conditions": [
+          "the target date passes without a decision",
+          "the exception reopens",
+          "privacy, safety, capacity, or service-policy facts conflict"
+        ],
+        "handoff_fields": [
+          "operational_exception_id",
+          "linked_entity_refs",
+          "exception_state",
+          "requested_decision",
+          "target_date",
+          "resolution_evidence_refs",
+          "next_accountable_persona_ref"
+        ],
+        "intent": "resolve_an_operational_exception_with_owner_authority",
+        "intent_id": "resolve_an_operational_exception_with_owner_authority",
+        "required_context": [
+          "tenant_id",
+          "actor_id",
+          "operational_exception_id",
+          "linked entity refs",
+          "exception type",
+          "current state",
+          "target date",
+          "requested decision",
+          "policy ref",
+          "expected revision"
+        ],
+        "route": "/exceptions",
+        "route_id": "exception_ledger",
+        "stop_conditions": [
+          "owner authority is absent for a decision",
+          "required policy is unavailable",
+          "resolution evidence is missing",
+          "expected revision is stale"
+        ],
+        "success_evidence": [
+          "operational_exception_id",
+          "new exception state",
+          "decision or resolution evidence refs",
+          "accountable owner actor id",
+          "exception workflow event id"
+        ]
+      }
+    ]
+  },
+  "implementation": {
+    "browser_evidence": [
+      {
+        "assertions": [
+          "request spine remains visible",
+          "evidence rail and decision seam are visually distinct without relying on copy",
+          "one next-move action is prominent",
+          "no KPI strip or generic card grid appears"
+        ],
+        "evidence_id": "request_dossier_desktop_silhouette",
+        "route_id": "request_dossier",
+        "viewport": "1440x1000"
+      },
+      {
+        "assertions": [
+          "request identity and current state remain pinned",
+          "rail switcher preserves the active request",
+          "the primary action is reachable by keyboard and touch",
+          "blocked and error messages do not rely on color"
+        ],
+        "evidence_id": "request_dossier_mobile_context",
+        "route_id": "request_dossier",
+        "viewport": "390x844"
+      },
+      {
+        "assertions": [
+          "labels remain visible after input",
+          "field errors identify the field and correction",
+          "submission completion names the next human step",
+          "staff-only details are absent"
+        ],
+        "evidence_id": "requester_intake_states",
+        "route_id": "requester_intake",
+        "viewport": "390x844"
+      },
+      {
+        "assertions": [
+          "all checklist items and evidence links are keyboard reachable",
+          "focus is visible",
+          "ready and not-ready decisions require explicit confirmation",
+          "decision text and evidence remain readable at 200 percent zoom"
+        ],
+        "evidence_id": "readiness_keyboard_path",
+        "route_id": "readiness_seam",
+        "viewport": "1280x800"
+      }
+    ],
+    "browser_evidence_status": "required_for_generated_product_verification",
+    "forbidden_fallbacks": [
+      "generic admin dashboard",
+      "unbound action button",
+      "placeholder route or copy",
+      "raw JSON inspector",
+      "factory metadata page",
+      "color-only workflow state",
+      "invented analytics or sample customer activity"
+    ],
+    "mode": "codex_composed",
+    "required_component_files": [
+      "components/quote-rivet/request-spine.tsx",
+      "components/quote-rivet/evidence-rail.tsx",
+      "components/quote-rivet/decision-seam.tsx",
+      "components/quote-rivet/next-move-dock.tsx",
+      "components/quote-rivet/request-queue-row.tsx",
+      "components/quote-rivet/site-capture-sheet.tsx",
+      "components/quote-rivet/readiness-stitch.tsx",
+      "components/quote-rivet/handoff-receipt.tsx",
+      "components/quote-rivet/route-state-panel.tsx"
+    ],
+    "silhouette_test": {
+      "method": "Hide the product name, logo, and customer copy on the primary request screen.",
+      "passing_observation": "The centered request spine, clipped evidence rail, stitched decision seam, and single bottom next-move dock still identify estimate-request qualification work rather than a generic dashboard.",
+      "rejection_conditions": [
+        "a KPI strip becomes the main first-viewport object",
+        "the request is replaced by a generic card grid",
+        "evidence and decisions lose their visible attachment to the request",
+        "factory or implementation metadata appears as a customer panel"
+      ],
+      "status": "contract_passed"
+    }
+  },
+  "journeys": [
+    {
+      "actor_ref": "office_coordinator",
+      "journey_id": "request_capture_and_qualification",
+      "objective": "Capture or correct a request, retain its source, and record the accountable qualification path.",
+      "steps": [
+        {
+          "action": "Send request",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_service_request_intake_and_qualification_requester_submits_request_v1",
+          "expected_evidence": "service_request.created.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "Send corrections",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_service_request_intake_and_qualification_requester_corrects_request_v1",
+          "expected_evidence": "service_request.corrected.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "Add requested photos or measurements",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_request_evidence_control_submit_evidence_version_v1",
+          "expected_evidence": "request_evidence.submitted.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "Choose this window",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_site_visit_and_scope_capture_requester_accepts_visit_window_v1",
+          "expected_evidence": "site_visit.requester_responded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "None of these work",
+          "actor_ref": "service_requester",
+          "command_ref": "cmd_site_visit_and_scope_capture_requester_declines_visit_windows_v1",
+          "expected_evidence": "site_visit.requester_responded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/request"
+        },
+        {
+          "action": "Capture request",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_captures_request_v1",
+          "expected_evidence": "service_request.created.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests"
+        },
+        {
+          "action": "Ask for missing details",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_marks_clarification_required_v1",
+          "expected_evidence": "qualification_decision.recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests"
+        },
+        {
+          "action": "Mark supported",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+          "expected_evidence": "qualification_decision.recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests"
+        },
+        {
+          "action": "Send to owner review",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_routes_owner_review_v1",
+          "expected_evidence": "qualification_decision.recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests"
+        },
+        {
+          "action": "Mark supported",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+          "expected_evidence": "qualification_decision.recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests/:service_request_id"
+        },
+        {
+          "action": "Set priority",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_qualified_request_assignment_prioritize_supported_request_v1",
+          "expected_evidence": "estimator_assignment.prioritized.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests/:service_request_id"
+        },
+        {
+          "action": "Review evidence",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_request_evidence_control_estimator_starts_evidence_review_v1",
+          "expected_evidence": "request_evidence.review_started.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests/:service_request_id"
+        },
+        {
+          "action": "Open exception",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_operational_exception_resolution_open_operational_exception_v1",
+          "expected_evidence": "operational_exception.opened.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "request_spine_panel",
+          "route": "/requests/:service_request_id"
+        }
+      ]
+    },
+    {
+      "actor_ref": "office_coordinator",
+      "journey_id": "supported_request_assignment",
+      "objective": "Prioritize supported work, assign an eligible estimator, and retain acknowledgement or return evidence.",
+      "steps": [
+        {
+          "action": "Set priority",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_qualified_request_assignment_prioritize_supported_request_v1",
+          "expected_evidence": "estimator_assignment.prioritized.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        },
+        {
+          "action": "Assign estimator",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_qualified_request_assignment_assign_eligible_estimator_v1",
+          "expected_evidence": "estimator_assignment.assigned.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        },
+        {
+          "action": "Accept assignment",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_qualified_request_assignment_estimator_acknowledges_assignment_v1",
+          "expected_evidence": "estimator_assignment.acknowledged.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        },
+        {
+          "action": "Return with reason",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_qualified_request_assignment_estimator_returns_assignment_v1",
+          "expected_evidence": "estimator_assignment.returned.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        },
+        {
+          "action": "Choose another estimator",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_qualified_request_assignment_coordinator_reassigns_returned_request_v1",
+          "expected_evidence": "estimator_assignment.reassigned.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/assignments"
+        }
+      ]
+    },
+    {
+      "actor_ref": "estimator",
+      "journey_id": "site_visit_scope_capture",
+      "objective": "Coordinate a site visit and retain the attributable field record, access outcome, and scope limits.",
+      "steps": [
+        {
+          "action": "Offer visit windows",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_site_visit_and_scope_capture_offer_visit_windows_v1",
+          "expected_evidence": "site_visit.windows_offered.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Confirm visit",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_site_visit_and_scope_capture_coordinator_confirms_visit_v1",
+          "expected_evidence": "site_visit.confirmed.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Start field record",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_site_visit_and_scope_capture_estimator_starts_visit_v1",
+          "expected_evidence": "site_visit.started.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Complete field record",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_site_visit_and_scope_capture_estimator_completes_field_record_v1",
+          "expected_evidence": "site_visit.completed.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Send to readiness review",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_site_visit_and_scope_capture_estimator_routes_complete_visit_v1",
+          "expected_evidence": "site_visit.routed_to_readiness.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        },
+        {
+          "action": "Record no access",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_site_visit_and_scope_capture_estimator_records_no_access_v1",
+          "expected_evidence": "site_visit.no_access.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "evidence_rail_panel",
+          "route": "/site-visits/:site_visit_id"
+        }
+      ]
+    },
+    {
+      "actor_ref": "estimator",
+      "journey_id": "readiness_handoff_and_exception",
+      "objective": "Record the current readiness decision, transfer its exact package, and resolve any owner-authority blocker without erasing history.",
+      "steps": [
+        {
+          "action": "Start readiness review",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_starts_readiness_review_v1",
+          "expected_evidence": "quote_readiness.review_started.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Record quote-ready",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_records_quote_ready_v1",
+          "expected_evidence": "quote_readiness.quote_ready_recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Record not ready",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_records_not_ready_v1",
+          "expected_evidence": "quote_readiness.not_ready_recorded.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Review corrected package",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_restarts_corrected_review_v1",
+          "expected_evidence": "quote_readiness.review_started.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Invalidate decision",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_readiness_review_estimator_invalidates_ready_decision_v1",
+          "expected_evidence": "quote_readiness.invalidated.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/requests/:service_request_id/readiness"
+        },
+        {
+          "action": "Assemble package",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_ready_handoff_estimator_assembles_handoff_v1",
+          "expected_evidence": "quote_ready_handoff.assembled.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Transfer package",
+          "actor_ref": "estimator",
+          "command_ref": "cmd_quote_ready_handoff_estimator_transfers_handoff_v1",
+          "expected_evidence": "quote_ready_handoff.transferred.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Record receipt",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_quote_ready_handoff_recipient_acknowledgement_recorded_v1",
+          "expected_evidence": "quote_ready_handoff.acknowledged.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Record rejection",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_quote_ready_handoff_recipient_rejection_recorded_v1",
+          "expected_evidence": "quote_ready_handoff.rejected.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Record access problem",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_quote_ready_handoff_recipient_access_failure_recorded_v1",
+          "expected_evidence": "quote_ready_handoff.access_failed.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Correct recipient access",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_quote_ready_handoff_coordinator_corrects_recipient_access_v1",
+          "expected_evidence": "quote_ready_handoff.access_corrected.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "next_move_dock_panel",
+          "route": "/requests/:service_request_id/handoff"
+        },
+        {
+          "action": "Open exception",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_operational_exception_resolution_open_operational_exception_v1",
+          "expected_evidence": "operational_exception.opened.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        },
+        {
+          "action": "Escalate to owner",
+          "actor_ref": "office_coordinator",
+          "command_ref": "cmd_operational_exception_resolution_escalate_operational_exception_v1",
+          "expected_evidence": "operational_exception.escalated.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        },
+        {
+          "action": "Record owner decision",
+          "actor_ref": "owner_manager",
+          "command_ref": "cmd_operational_exception_resolution_owner_decides_exception_v1",
+          "expected_evidence": "operational_exception.decided.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        },
+        {
+          "action": "Close resolved exception",
+          "actor_ref": "owner_manager",
+          "command_ref": "cmd_operational_exception_resolution_owner_closes_resolved_exception_v1",
+          "expected_evidence": "operational_exception.closed.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        },
+        {
+          "action": "Reopen exception",
+          "actor_ref": "owner_manager",
+          "command_ref": "cmd_operational_exception_resolution_owner_reopens_exception_v1",
+          "expected_evidence": "operational_exception.reopened.v1 with the returned entity revision and accountable actor",
+          "panel_ref": "decision_seam_panel",
+          "route": "/exceptions"
+        }
+      ]
+    }
+  ],
+  "language_system": {
+    "audience_description": "Small residential service teams whose office coordinator, estimator, and owner need one accountable path from an incoming estimate request to a quote-ready handoff. Requesters see only their request, evidence, visit choices, and clear next step.",
+    "first_run": {
+      "orientation_steps": [
+        "Choose the request source and record the requester's contact, service location, requested work, and follow-up consent.",
+        "Review the request dossier for missing or contradictory facts.",
+        "Record clarification, supported work, or owner review as the one attributable next step."
+      ],
+      "promise": "Turn one scattered estimate request into a visible, owned next step without replacing accounting or dispatch.",
+      "starting_action": "Capture the first request",
+      "success_message": "Request captured. The source and details are saved, and the next review belongs to {next_accountable_person}."
+    },
+    "user_goal": "Move each request from first contact to an assigned, evidence-backed quote-ready package while keeping every correction and decision attributable.",
+    "vocabulary": {
+      "definitions": [
+        {
+          "plain_language": "The requester's contact, location, requested work, consent, source channel, and correction history.",
+          "term": "Service request"
+        },
+        {
+          "plain_language": "A coordinator or authorized owner recorded that the request fits the current service rules. It is not a promise to perform the work.",
+          "term": "Supported"
+        },
+        {
+          "plain_language": "A versioned photo, measurement, document, or note used in a named operational decision.",
+          "term": "Evidence"
+        },
+        {
+          "plain_language": "A scheduled field review that records attributable observations and access outcomes.",
+          "term": "Site visit"
+        },
+        {
+          "plain_language": "The assigned estimator recorded that the current checklist passed with usable evidence and no unresolved blocker. No quote has been issued by this state alone.",
+          "term": "Quote-ready"
+        },
+        {
+          "plain_language": "An immutable package version transferred to a verified recipient with its readiness decision, evidence refs, limits, and open obligations.",
+          "term": "Handoff"
+        },
+        {
+          "plain_language": "A blocker or authority question with an owner, target date, requested decision, and retained resolution evidence.",
+          "term": "Exception"
+        }
+      ],
+      "preferred_terms": [
+        "request",
+        "requested work",
+        "missing details",
+        "site visit",
+        "assigned estimator",
+        "evidence",
+        "scope note",
+        "quote-ready",
+        "next step",
+        "needs owner review"
+      ],
+      "terms_to_avoid": [
+        "lead object",
+        "ticket",
+        "pipeline stage",
+        "artifact",
+        "payload",
+        "workflow transition",
+        "CRUD",
+        "agent run",
+        "factory task",
+        "guaranteed quote",
+        "won job",
+        "revenue impact",
+        "AI-approved"
+      ]
+    },
+    "voice_principles": [
+      "Name the request, the accountable person, and the next step in the first sentence.",
+      "Use the requester's words for the work. Keep policy and system vocabulary in staff-only supporting text.",
+      "State what is missing and how to correct it. Do not use vague failure copy.",
+      "Separate recorded facts from decisions and limits. Never turn quote-ready into a sales or revenue claim.",
+      "Use calm, direct sentences. Do not praise routine actions or imply urgency that no policy supports."
+    ]
+  },
+  "primary_task": {
+    "actor_ref": "office_coordinator",
+    "objective": "Open one incoming estimate request, complete its minimum facts, and record the accountable next step without losing its source or requester-visible history.",
+    "success_signal": "The request spine shows a retained source, complete minimum details, a current state, one accountable person, and one permission-valid next move backed by an executable command ref."
+  },
+  "schema_version": "product_factory.experience_blueprint.v3",
+  "signature_components": [
+    {
+      "command_refs": [
+        "cmd_service_request_intake_and_qualification_requester_submits_request_v1",
+        "cmd_service_request_intake_and_qualification_requester_corrects_request_v1",
+        "cmd_service_request_intake_and_qualification_coordinator_captures_request_v1"
+      ],
+      "component_id": "request_spine",
+      "interaction": "Keep the original request, requester-visible corrections, source channel, and identity fixed in view while staff work through qualification, assignment, evidence, and readiness.",
+      "name": "Request spine",
+      "panel_ref": "request_spine_panel",
+      "route_refs": [
+        "requester_intake",
+        "request_dossier",
+        "site_visit_workbench",
+        "readiness_seam",
+        "handoff_dock"
+      ]
+    },
+    {
+      "command_refs": [
+        "cmd_request_evidence_control_submit_evidence_version_v1",
+        "cmd_request_evidence_control_estimator_accepts_evidence_v1",
+        "cmd_request_evidence_control_estimator_requests_evidence_correction_v1"
+      ],
+      "component_id": "evidence_rail",
+      "interaction": "Show versioned photos, measurements, notes, review status, disputes, and access restrictions beside the decision that cites them.",
+      "name": "Evidence rail",
+      "panel_ref": "evidence_rail_panel",
+      "route_refs": [
+        "request_dossier",
+        "site_visit_workbench",
+        "readiness_seam"
+      ]
+    },
+    {
+      "command_refs": [
+        "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+        "cmd_quote_readiness_review_estimator_records_quote_ready_v1",
+        "cmd_operational_exception_resolution_owner_decides_exception_v1"
+      ],
+      "component_id": "decision_seam",
+      "interaction": "Stitch qualification, assignment, exception, readiness, and handoff decisions into one chronological edge with actor, time, reason, evidence, and current validity.",
+      "name": "Decision seam",
+      "panel_ref": "decision_seam_panel",
+      "route_refs": [
+        "request_dossier",
+        "readiness_seam",
+        "handoff_dock",
+        "exception_ledger"
+      ]
+    },
+    {
+      "command_refs": [
+        "cmd_service_request_intake_and_qualification_coordinator_marks_clarification_required_v1",
+        "cmd_qualified_request_assignment_assign_eligible_estimator_v1",
+        "cmd_site_visit_and_scope_capture_estimator_routes_complete_visit_v1",
+        "cmd_quote_ready_handoff_estimator_transfers_handoff_v1"
+      ],
+      "component_id": "next_move_dock",
+      "interaction": "Present one permission-valid primary command, explain its guard in plain language, and keep alternatives subordinate.",
+      "name": "Next-move dock",
+      "panel_ref": "next_move_dock_panel",
+      "route_refs": [
+        "requester_intake",
+        "intake_queue",
+        "request_dossier",
+        "assignment_board",
+        "site_visit_workbench",
+        "readiness_seam",
+        "handoff_dock",
+        "exception_ledger"
+      ]
+    },
+    {
+      "command_refs": [
+        "cmd_quote_readiness_review_estimator_starts_readiness_review_v1",
+        "cmd_quote_readiness_review_estimator_records_quote_ready_v1",
+        "cmd_quote_readiness_review_estimator_records_not_ready_v1"
+      ],
+      "component_id": "readiness_stitch",
+      "interaction": "Pair each readiness criterion with the exact evidence version, result, limitation, and responsible reviewer before a final decision command becomes available.",
+      "name": "Readiness stitch",
+      "panel_ref": "decision_seam_panel",
+      "route_refs": [
+        "readiness_seam"
+      ]
+    }
+  ],
+  "usability_contract": {
+    "anti_bloat_rules": [
+      "Show one request and one primary next move at a time.",
+      "Keep history collapsed until the user asks for prior versions or decisions.",
+      "Put advanced policy, retention, archive, restore, restriction, and invalidation controls behind a named More actions disclosure.",
+      "Use queue rows for comparison and the dossier for action. Do not duplicate full forms inside cards.",
+      "Never display implementation metadata as a customer-facing panel."
+    ],
+    "context_preservation": {
+      "desktop_strategy": "sticky_adjacent",
+      "mobile_strategy": "edit_preview_toggle",
+      "primary_object_visible_during_modes": true
+    },
+    "interaction_model": "focused_modes",
+    "primary_action_limit": 1,
+    "primary_modes": [
+      {
+        "default": true,
+        "label": "Request",
+        "mode_id": "request",
+        "panel_refs": [
+          "request_spine_panel"
+        ],
+        "purpose": "Review or correct the source request while its identity and current state stay visible."
+      },
+      {
+        "default": false,
+        "label": "Evidence",
+        "mode_id": "evidence",
+        "panel_refs": [
+          "evidence_rail_panel"
+        ],
+        "purpose": "Capture or review evidence and site facts without losing the active request."
+      },
+      {
+        "default": false,
+        "label": "Decision",
+        "mode_id": "decision",
+        "panel_refs": [
+          "decision_seam_panel",
+          "next_move_dock_panel"
+        ],
+        "purpose": "Review the current decision trail and execute one guarded next command."
+      }
+    ],
+    "progressive_disclosure": {
+      "advanced_controls": [
+        "archive or restore",
+        "restrict or restore access",
+        "invalidate a prior decision or handoff",
+        "open full version history",
+        "inspect policy attribution"
+      ],
+      "advanced_group_label": "More actions",
+      "always_visible": [
+        "request identity and current state",
+        "accountable person",
+        "missing or blocked facts",
+        "current evidence summary",
+        "one primary next move"
+      ]
+    },
+    "save_behavior": {
+      "drafts": "automatic",
+      "high_risk_actions": "explicit_confirmation",
+      "status_feedback": "Show Saving beside the edited section, then Saved with the latest revision. A command result must name the new state and accountable next step. A stale revision keeps the user's draft and asks them to review the changed facts before retrying."
+    }
+  },
+  "workspace": {
+    "composition_mode": "product_specific",
+    "panels": [
+      {
+        "command_refs": [
+          "cmd_service_request_intake_and_qualification_requester_submits_request_v1",
+          "cmd_service_request_intake_and_qualification_requester_corrects_request_v1",
+          "cmd_request_evidence_control_submit_evidence_version_v1",
+          "cmd_site_visit_and_scope_capture_requester_accepts_visit_window_v1",
+          "cmd_site_visit_and_scope_capture_requester_declines_visit_windows_v1",
+          "cmd_service_request_intake_and_qualification_coordinator_captures_request_v1",
+          "cmd_service_request_intake_and_qualification_coordinator_marks_clarification_required_v1",
+          "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+          "cmd_service_request_intake_and_qualification_coordinator_routes_owner_review_v1",
+          "cmd_service_request_intake_and_qualification_coordinator_records_supported_v1",
+          "cmd_qualified_request_assignment_prioritize_supported_request_v1"
+        ],
+        "entity_ref": "service_request",
+        "first_viewport": true,
+        "kind": "editor",
+        "panel_id": "request_spine_panel",
+        "position": "center",
+        "primary": true,
+        "purpose": "Keep the retained source request, requester-visible corrections, current state, and accountable person fixed in view.",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "blocked",
+          "completed"
+        ],
+        "title": "Request dossier"
+      },
+      {
+        "command_refs": [
+          "cmd_request_evidence_control_estimator_starts_evidence_review_v1",
+          "cmd_site_visit_and_scope_capture_offer_visit_windows_v1",
+          "cmd_site_visit_and_scope_capture_coordinator_confirms_visit_v1",
+          "cmd_site_visit_and_scope_capture_estimator_starts_visit_v1",
+          "cmd_site_visit_and_scope_capture_estimator_completes_field_record_v1",
+          "cmd_site_visit_and_scope_capture_estimator_routes_complete_visit_v1",
+          "cmd_site_visit_and_scope_capture_estimator_records_no_access_v1"
+        ],
+        "entity_ref": "request_evidence",
+        "first_viewport": true,
+        "kind": "resource",
+        "panel_id": "evidence_rail_panel",
+        "position": "left_adjacent",
+        "primary": false,
+        "purpose": "Attach current evidence versions, checklist gaps, disputes, and site observations to the active request.",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "blocked",
+          "completed"
+        ],
+        "title": "Evidence and field record"
+      },
+      {
+        "command_refs": [
+          "cmd_operational_exception_resolution_open_operational_exception_v1",
+          "cmd_quote_readiness_review_estimator_starts_readiness_review_v1",
+          "cmd_quote_readiness_review_estimator_records_quote_ready_v1",
+          "cmd_quote_readiness_review_estimator_records_not_ready_v1",
+          "cmd_quote_readiness_review_estimator_restarts_corrected_review_v1",
+          "cmd_quote_readiness_review_estimator_invalidates_ready_decision_v1",
+          "cmd_operational_exception_resolution_open_operational_exception_v1",
+          "cmd_operational_exception_resolution_escalate_operational_exception_v1",
+          "cmd_operational_exception_resolution_owner_decides_exception_v1",
+          "cmd_operational_exception_resolution_owner_closes_resolved_exception_v1",
+          "cmd_operational_exception_resolution_owner_reopens_exception_v1"
+        ],
+        "entity_ref": "quote_readiness_decision",
+        "first_viewport": true,
+        "kind": "decision_gate",
+        "panel_id": "decision_seam_panel",
+        "position": "right_adjacent",
+        "primary": false,
+        "purpose": "Show attributable qualification, readiness, and exception decisions with their evidence, validity, and next owner.",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "blocked",
+          "completed"
+        ],
+        "title": "Decisions and exceptions"
+      },
+      {
+        "command_refs": [
+          "cmd_qualified_request_assignment_prioritize_supported_request_v1",
+          "cmd_qualified_request_assignment_assign_eligible_estimator_v1",
+          "cmd_qualified_request_assignment_estimator_acknowledges_assignment_v1",
+          "cmd_qualified_request_assignment_estimator_returns_assignment_v1",
+          "cmd_qualified_request_assignment_coordinator_reassigns_returned_request_v1",
+          "cmd_quote_ready_handoff_estimator_assembles_handoff_v1",
+          "cmd_quote_ready_handoff_estimator_transfers_handoff_v1",
+          "cmd_quote_ready_handoff_recipient_acknowledgement_recorded_v1",
+          "cmd_quote_ready_handoff_recipient_rejection_recorded_v1",
+          "cmd_quote_ready_handoff_recipient_access_failure_recorded_v1",
+          "cmd_quote_ready_handoff_coordinator_corrects_recipient_access_v1"
+        ],
+        "entity_ref": "estimator_assignment",
+        "first_viewport": true,
+        "kind": "decision_gate",
+        "panel_id": "next_move_dock_panel",
+        "position": "bottom_sticky",
+        "primary": false,
+        "purpose": "Present one permission-valid command, explain its guard in plain language, and keep alternatives subordinate.",
+        "states": [
+          "loading",
+          "empty",
+          "error",
+          "blocked",
+          "completed"
+        ],
+        "title": "Next move"
+      }
+    ],
+    "primary_object": "service_request dossier"
+  }
+}

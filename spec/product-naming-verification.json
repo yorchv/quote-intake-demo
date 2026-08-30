@@ -1,0 +1,77 @@
+{
+  "build_id": "build_quote_intake_demo_2ef739047aad",
+  "checks": [
+    {
+      "check_id": "research_status_is_researched",
+      "detail": "researched",
+      "passed": true
+    },
+    {
+      "check_id": "selected_name_matches_product_name",
+      "detail": {
+        "name": "QuoteRivet",
+        "selected_name": "QuoteRivet"
+      },
+      "passed": true
+    },
+    {
+      "check_id": "selection_strategy_is_recorded",
+      "detail": "Use a compact coined compound that keeps quote-intake meaning visible without reading like a generic utility label. QuoteRivet leads because it is memorable, tied to the evidence-package workflow, and showed no exact product match in the bounded web scan. Legal, trademark, domain, company-name, and app-store clearance remain required before public launch.",
+      "passed": true
+    },
+    {
+      "check_id": "at_least_three_unique_candidates_are_recorded",
+      "detail": [
+        "QuoteRivet",
+        "ScopeRivet",
+        "QuoteLatch",
+        "ReadyScope",
+        "ScopeRelay"
+      ],
+      "passed": true
+    },
+    {
+      "check_id": "candidate_rationales_and_risks_are_complete",
+      "detail": 5,
+      "passed": true
+    },
+    {
+      "check_id": "selected_name_is_a_researched_candidate",
+      "detail": "QuoteRivet",
+      "passed": true
+    },
+    {
+      "check_id": "at_least_two_rejected_names_have_reasons",
+      "detail": 4,
+      "passed": true
+    },
+    {
+      "check_id": "at_least_two_research_sources_are_recorded",
+      "detail": [
+        "exact-name web search: \"QuoteRivet\" software; \"QuoteRivet\" contractor",
+        "exact-name web search: \"ScopeRivet\" software; \"ScopeRivet\" contractor",
+        "https://www.scoperelay.com/",
+        "https://readyscope.base44.app/",
+        "https://fieldcue.app/",
+        "https://www.capterra.com/p/10040815/Latch/"
+      ],
+      "passed": true
+    },
+    {
+      "check_id": "customer_name_is_one_to_three_words",
+      "detail": "QuoteRivet",
+      "passed": true
+    },
+    {
+      "check_id": "customer_name_avoids_generic_utility_terms",
+      "detail": [],
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "name": "QuoteRivet",
+  "passed": true,
+  "product_id": "quote-intake-demo",
+  "schema_version": "product_factory.product_naming_verification.v1",
+  "status": "naming_researched"
+}

@@ -1,0 +1,278 @@
+{
+  "build_id": "build_quote_intake_demo_2ef739047aad",
+  "checks_failed": [],
+  "checks_passed": [
+    "The retained rendered and HTTP evidence manifests identify this product and build, cover each of the five declared public routes exactly once, and record desktop and mobile viewports.",
+    "Every public route has a unique rendered title, primary heading, visible summary, evidence label, Start an estimate request CTA, and the declared internal public links.",
+    "Every approved visible claim resolves through organic-discovery.json to one or more retained evidence sources; no prohibited close-rate, revenue, never-miss, staff-replacement, or full-stack-replacement claim appears in the reviewed captures.",
+    "The HTTP evidence records status 200, an indexable robots directive, the declared canonical URL, and the declared structured-data types for every public route.",
+    "The retained private-route and authenticated API probes record noindex directives or non-exposure for private frontend paths, exclusion from the sitemap, anonymous API denial with 401, and owner-report permission denial with 403.",
+    "The retained crawler evidence records status 200 for sitemap.xml and robots.txt, includes only the five public routes in the sitemap, allows OAI-SearchBot on public content, and disallows GPTBot from all content.",
+    "The retained customer-clarity and skeptical-buyer reviews are verified and approved for this product and build."
+  ],
+  "decision": "approved",
+  "evidence_basis": {
+    "http_manifest_ref": "organic-evidence/manifest.json",
+    "preview_attempt": {
+      "command": "npm run dev -- --hostname 127.0.0.1 --port 4173",
+      "result": "listen EPERM: operation not permitted 127.0.0.1:4173"
+    },
+    "rendered_manifest_ref": "copy-review-evidence/manifest.json",
+    "rendered_routes_ref": "copy-review-evidence/browser-rendered-routes.json",
+    "review_mode": "retained_root_managed_evidence"
+  },
+  "issues": [],
+  "privacy_review": {
+    "authenticated_api_outcomes": [
+      {
+        "actor": "anonymous",
+        "endpoint": "/state",
+        "http_status": 401,
+        "result": "auth_required"
+      },
+      {
+        "actor": "anonymous",
+        "endpoint": "/agent-interface",
+        "http_status": 401,
+        "result": "auth_required"
+      },
+      {
+        "actor": "anonymous",
+        "endpoint": "/owner-report",
+        "http_status": 401,
+        "result": "auth_required"
+      },
+      {
+        "actor": "office_coordinator",
+        "endpoint": "/owner-report",
+        "http_status": 403,
+        "result": "owner_permission_required"
+      }
+    ],
+    "crawler_policy": {
+      "gptbot": "disallow",
+      "oai_searchbot": "allow_public_only",
+      "robots_status": 200,
+      "sitemap_status": 200
+    },
+    "private_route_outcomes": [
+      {
+        "absent_from_sitemap": true,
+        "http_status": 200,
+        "noindex": true,
+        "route": "/request",
+        "surface": "anonymous_conversion_form"
+      },
+      {
+        "absent_from_sitemap": true,
+        "http_status": 404,
+        "noindex": true,
+        "route": "/owner",
+        "surface": "not_exposed_frontend_route"
+      },
+      {
+        "absent_from_sitemap": true,
+        "http_status": 404,
+        "noindex": true,
+        "route": "/settings",
+        "surface": "not_exposed_frontend_route"
+      },
+      {
+        "absent_from_sitemap": true,
+        "http_status": 404,
+        "noindex": true,
+        "route": "/requests/example",
+        "surface": "not_exposed_frontend_route"
+      }
+    ]
+  },
+  "product_id": "quote-intake-demo",
+  "required": true,
+  "reviewed_routes": [
+    "/",
+    "/estimate-request-intake",
+    "/quote-ready-checklist",
+    "/site-visit-handoff",
+    "/works-with-your-tools"
+  ],
+  "reviewer_agent_id": "organic_discovery_review_agent",
+  "route_reviews": [
+    {
+      "canonical": "http://localhost:3000/",
+      "claim_refs": [
+        "claim_intake_queue",
+        "claim_quote_ready_package",
+        "claim_focused_companion"
+      ],
+      "cta": {
+        "href": "/request",
+        "label": "Start an estimate request",
+        "verified": true
+      },
+      "evidence_refs": [
+        "organic-discovery.json",
+        "organic-evidence/manifest.json",
+        "copy-review-evidence/home-desktop-full.png",
+        "copy-review-evidence/home-mobile-full.png"
+      ],
+      "heading": "Send the job details once and see who will review them next.",
+      "http_status": 200,
+      "internal_links": [
+        "/estimate-request-intake",
+        "/quote-ready-checklist",
+        "/site-visit-handoff",
+        "/works-with-your-tools"
+      ],
+      "route": "/",
+      "structured_data_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "SoftwareApplication"
+      ],
+      "summary": "Tell the company what needs attention, where the work is, and how to follow up. A staff member will check the details before arranging a visit or preparing a quote.",
+      "title": "QuoteRivet | Estimate Request Intake for Contractors",
+      "verified": true,
+      "visible_evidence_label": "Sources"
+    },
+    {
+      "canonical": "http://localhost:3000/estimate-request-intake",
+      "claim_refs": [
+        "claim_intake_queue"
+      ],
+      "cta": {
+        "href": "/request",
+        "label": "Start an estimate request",
+        "verified": true
+      },
+      "evidence_refs": [
+        "organic-discovery.json",
+        "organic-evidence/manifest.json",
+        "copy-review-evidence/estimate-request-intake-desktop-full.png",
+        "copy-review-evidence/estimate-request-intake-mobile-full.png"
+      ],
+      "heading": "Organize every estimate request before assignment",
+      "http_status": 200,
+      "internal_links": [
+        "/",
+        "/quote-ready-checklist",
+        "/site-visit-handoff"
+      ],
+      "route": "/estimate-request-intake",
+      "structured_data_types": [
+        "WebPage",
+        "Article",
+        "BreadcrumbList"
+      ],
+      "summary": "Office staff can keep requests from every channel in one place, fill in missing details, and tell each requester who will follow up.",
+      "title": "Estimate request intake for contractors | QuoteRivet",
+      "verified": true,
+      "visible_evidence_label": "Sources"
+    },
+    {
+      "canonical": "http://localhost:3000/quote-ready-checklist",
+      "claim_refs": [
+        "claim_quote_ready_package"
+      ],
+      "cta": {
+        "href": "/request",
+        "label": "Start an estimate request",
+        "verified": true
+      },
+      "evidence_refs": [
+        "organic-discovery.json",
+        "organic-evidence/manifest.json",
+        "copy-review-evidence/quote-ready-checklist-desktop-full.png",
+        "copy-review-evidence/quote-ready-checklist-mobile-full.png"
+      ],
+      "heading": "Check the details before preparing a quote",
+      "http_status": 200,
+      "internal_links": [
+        "/",
+        "/estimate-request-intake",
+        "/site-visit-handoff"
+      ],
+      "route": "/quote-ready-checklist",
+      "structured_data_types": [
+        "WebPage",
+        "Article",
+        "BreadcrumbList"
+      ],
+      "summary": "Use this checklist to see which request and site details are present, which are missing, and what an estimator still needs before preparing a quote.",
+      "title": "Estimate details checklist for service requests | QuoteRivet",
+      "verified": true,
+      "visible_evidence_label": "Sources"
+    },
+    {
+      "canonical": "http://localhost:3000/site-visit-handoff",
+      "claim_refs": [
+        "claim_quote_ready_package"
+      ],
+      "cta": {
+        "href": "/request",
+        "label": "Start an estimate request",
+        "verified": true
+      },
+      "evidence_refs": [
+        "organic-discovery.json",
+        "organic-evidence/manifest.json",
+        "copy-review-evidence/site-visit-handoff-desktop-full.png",
+        "copy-review-evidence/site-visit-handoff-mobile-full.png"
+      ],
+      "heading": "Keep every site-visit detail with the estimate request",
+      "http_status": 200,
+      "internal_links": [
+        "/",
+        "/estimate-request-intake",
+        "/quote-ready-checklist"
+      ],
+      "route": "/site-visit-handoff",
+      "structured_data_types": [
+        "WebPage",
+        "Article",
+        "BreadcrumbList"
+      ],
+      "summary": "Keep the work description the requester can see, confirmed visit time, assigned estimator, access notes, and site checklist in one place. A scheduled visit does not mean the company has enough information to prepare a quote.",
+      "title": "Site-visit handoff for estimates | QuoteRivet",
+      "verified": true,
+      "visible_evidence_label": "Sources"
+    },
+    {
+      "canonical": "http://localhost:3000/works-with-your-tools",
+      "claim_refs": [
+        "claim_focused_companion"
+      ],
+      "cta": {
+        "href": "/request",
+        "label": "Start an estimate request",
+        "verified": true
+      },
+      "evidence_refs": [
+        "organic-discovery.json",
+        "organic-evidence/manifest.json",
+        "copy-review-evidence/works-with-your-tools-desktop-full.png",
+        "copy-review-evidence/works-with-your-tools-mobile-full.png"
+      ],
+      "heading": "Keep estimate requests organized alongside your current tools",
+      "http_status": 200,
+      "internal_links": [
+        "/",
+        "/estimate-request-intake",
+        "/quote-ready-checklist",
+        "/site-visit-handoff"
+      ],
+      "route": "/works-with-your-tools",
+      "structured_data_types": [
+        "WebPage",
+        "SoftwareApplication",
+        "BreadcrumbList"
+      ],
+      "summary": "QuoteRivet keeps request review, estimator assignment, site details, the pre-quote check, and delivery to the next staff member together. Accounting, dispatch, invoicing, payments, and completed-job records stay in the systems your team already uses.",
+      "title": "Focused quote intake beside your current tools | QuoteRivet",
+      "verified": true,
+      "visible_evidence_label": "Sources"
+    }
+  ],
+  "schema_version": "product_factory.organic_discovery_rendered_review.v1",
+  "status": "verified"
+}

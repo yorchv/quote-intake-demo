@@ -1,0 +1,54 @@
+{
+  "context": {
+    "contract_ref": "organic-discovery.json",
+    "http_evidence_ref": "organic-evidence/manifest.json",
+    "preview_command": "npm run dev -- --hostname 127.0.0.1 --port 4173",
+    "preview_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app/frontend",
+    "preview_url": "http://127.0.0.1:4173",
+    "rendered_evidence_ref": "copy-review-evidence/manifest.json",
+    "required": true,
+    "review_ref": "organic-discovery-review.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "organic_discovery_review_agent",
+    "allowed_scope": [
+      "organic-discovery-review.json",
+      "organic-discovery-verification.json",
+      "organic-evidence/**",
+      "copy-review-evidence/**",
+      "organic-discovery.json"
+    ],
+    "definition_of_done": [
+      "Write organic-discovery-review.json with schema_version product_factory.organic_discovery_rendered_review.v1, reviewer_agent_id organic_discovery_review_agent, status verified, the current product_id and build_id, and reviewed_routes containing every declared public route exactly once.",
+      "Open every declared public route and verify unique visible title, heading, summary, evidence, CTA, and internal links.",
+      "When the reviewer sandbox cannot bind a preview port, use retained root-managed full-page screenshots and HTTP evidence only when the manifests record exact routes, viewports, rendered titles, headings, metadata, structured-data types, response statuses, and authorization outcomes.",
+      "Verify every approved visible claim resolves to organic-discovery.json evidence.",
+      "Verify authenticated and owner routes return noindex directives, require auth or permission, and are absent from sitemap.xml.",
+      "Verify canonical URLs, rendered structured data, sitemap, robots, OAI-SearchBot policy, and GPTBot policy match the contract.",
+      "Record every reviewed route and concrete blocking issue in organic-discovery-review.json.",
+      "Set decision to approved only with non-empty checks_passed, empty checks_failed, and no issues.",
+      "python3 scripts/verify-organic-discovery.py passes."
+    ],
+    "dependencies": [
+      "product_experience_implementation_agent",
+      "launch_distribution_agent",
+      "customer_clarity_review_agent",
+      "skeptical_buyer_review_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "frontend source, product behavior, or strategy source; the independent reviewer reports defects but does not repair its own findings",
+      "approving unsupported customer, review, ranking, revenue, or performance claims",
+      "treating robots.txt as authentication or authorization",
+      "adding private routes to the sitemap",
+      "mass-producing pages for keyword variations",
+      "raw secret persistence"
+    ],
+    "objective": "Independently verify that rendered public pages answer researched customer intents with truthful evidence and that private product surfaces cannot enter search.",
+    "task_id": "review-quote-intake-demo-organic-discovery",
+    "title": "Review QuoteRivet public discovery and privacy boundaries",
+    "verification_command": "python3 scripts/verify-organic-discovery.py"
+  }
+}

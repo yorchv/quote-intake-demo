@@ -1,0 +1,37 @@
+{
+  "dependencies": {
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-dropdown-menu": "latest",
+    "@radix-ui/react-label": "latest",
+    "@radix-ui/react-select": "latest",
+    "@radix-ui/react-slot": "latest",
+    "@radix-ui/react-tabs": "latest",
+    "@tailwindcss/postcss": "latest",
+    "class-variance-authority": "latest",
+    "clsx": "latest",
+    "lucide-react": "latest",
+    "next": "latest",
+    "posthog-js": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-hook-form": "latest",
+    "sharp": "^0.35.3",
+    "tailwind-merge": "latest",
+    "tailwindcss": "latest",
+    "tw-animate-css": "latest"
+  },
+  "devDependencies": {},
+  "name": "quote-intake-demo-hosted-web",
+  "overrides": {
+    "postcss": "^8.5.10",
+    "sharp": "^0.35.3"
+  },
+  "private": true,
+  "scripts": {
+    "build": "node scripts/prepare-static-deployment.mjs && node scripts/render-social-assets.mjs && next build --webpack",
+    "dev": "next dev -H 0.0.0.0",
+    "start": "npx serve@14 out -l 3000",
+    "test": "node --test"
+  },
+  "type": "module"
+}

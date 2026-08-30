@@ -1,0 +1,111 @@
+{
+  "build_id": "build_quote_intake_demo_2ef739047aad",
+  "checks": {
+    "accessibility_basics_pass": true,
+    "advanced_controls_are_progressively_disclosed": true,
+    "authenticated_workspace_matches_design_contract": true,
+    "copy_is_complete_and_customer_facing": true,
+    "focused_modes_match_contract": true,
+    "no_generic_shell_language": true,
+    "one_primary_action_per_mode": true,
+    "primary_object_context_is_preserved": true,
+    "public_entry_matches_design_contract": true,
+    "responsive_layout_is_usable": true,
+    "states_are_truthful": true
+  },
+  "criteria": {
+    "composition": {
+      "evidence": "public-desktop.png and public-mobile.png use a single estimate-request sheet with one start action and a numbered human-review explanation. authenticated-desktop.png and authenticated-mobile.png keep request-browser-001, its state, accountable role, and missing facts above the focused Request, Evidence, and Decision modes, with one guarded action in the bottom dock.",
+      "score": 4
+    },
+    "content_quality": {
+      "evidence": "public-desktop.png and public-mobile.png explain what the requester supplies, that a person reviews it, and what is saved. authenticated-desktop.png and authenticated-mobile.png name the operational exception, accountable office coordinator, current Supported state, and exact next action. None of the contract's ten forbidden scaffold phrases appear.",
+      "score": 4
+    },
+    "product_specificity": {
+      "evidence": "All four screenshots use QuoteRivet's estimate-request vocabulary. The public views discuss service location, requested work, follow-up consent, visits, and quotes. The authenticated views show request-browser-001, estimator priority, quote readiness, quote-ready handoff, and operational exceptions rather than a generic dashboard.",
+      "score": 4
+    },
+    "responsive_quality": {
+      "evidence": "The 1440x900 views use wide two-column or workbench compositions. The 390x844 views reflow the public explanation into one column and the authenticated request facts into a two-column strip. manifest.json records no horizontal overflow for all four exact viewports.",
+      "score": 4
+    },
+    "typography": {
+      "evidence": "Headings, body copy, folios, request identifiers, modes, and primary actions remain readable across all four screenshots. authenticated-desktop.png and authenticated-mobile.png now show a labeled 44-pixel Sign out control with light text on a graphite background; the manifest records rgb(255, 250, 240) on rgb(59, 57, 50), an independently calculated 11.11:1 contrast ratio.",
+      "score": 4
+    },
+    "visual_hierarchy": {
+      "evidence": "public-desktop.png and public-mobile.png lead with one dominant customer promise and one dark start action. authenticated-desktop.png and authenticated-mobile.png establish the exception title, persistent request facts, active Decision mode, and one copper next action without KPI strips, charts, or detached card grids.",
+      "score": 4
+    }
+  },
+  "decision": "approved",
+  "independent_from": [
+    "product_experience_implementation_agent"
+  ],
+  "issues": [],
+  "product_id": "quote-intake-demo",
+  "reviewer_agent_id": "design_quality_review_agent",
+  "schema_version": "product_factory.design_readiness_review.v1",
+  "screenshots": [
+    {
+      "authenticated_marker": false,
+      "height": 900,
+      "no_horizontal_overflow": true,
+      "path": "public-desktop.png",
+      "public_marker": true,
+      "ref": "design-evidence/public-desktop.png",
+      "sha256": "4bd893c6f54336b2250a6df83ddaebe8cfa3239bf5239d1585fe8c3bc2cfb407",
+      "surface": "public",
+      "viewport": "desktop",
+      "width": 1440
+    },
+    {
+      "authenticated_marker": false,
+      "height": 844,
+      "no_horizontal_overflow": true,
+      "path": "public-mobile.png",
+      "public_marker": true,
+      "ref": "design-evidence/public-mobile.png",
+      "sha256": "355c61c022b43c2867c8974b59c3deb4a68b943820fa21f61b357394e1e54d07",
+      "surface": "public",
+      "viewport": "mobile",
+      "width": 390
+    },
+    {
+      "authenticated_marker": true,
+      "height": 900,
+      "no_horizontal_overflow": true,
+      "path": "authenticated-desktop.png",
+      "public_marker": false,
+      "ref": "design-evidence/authenticated-desktop.png",
+      "sha256": "55fc5f84e075b71e1b19c30f68cc60dbf0fc6fdfe8cd1b8c98b43bec2823f7bd",
+      "surface": "authenticated",
+      "verified_modes": [
+        "Request",
+        "Evidence",
+        "Decision"
+      ],
+      "viewport": "desktop",
+      "width": 1440
+    },
+    {
+      "authenticated_marker": true,
+      "height": 844,
+      "no_horizontal_overflow": true,
+      "path": "authenticated-mobile.png",
+      "public_marker": false,
+      "ref": "design-evidence/authenticated-mobile.png",
+      "sha256": "00aa6f11a4e2875da1b50defaf7e2cf9187129ae7284c01df6a7891609b80a49",
+      "surface": "authenticated",
+      "verified_modes": [
+        "Request",
+        "Evidence",
+        "Decision"
+      ],
+      "viewport": "mobile",
+      "width": 390
+    }
+  ],
+  "status": "complete"
+}

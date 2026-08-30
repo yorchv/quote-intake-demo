@@ -1,0 +1,56 @@
+{
+  "browser_runtime": "agent-browser 0.26.0 via root-managed localhost preview",
+  "build_id": "build_quote_intake_demo_2ef739047aad",
+  "product_id": "quote-intake-demo",
+  "schema_version": "product_factory.design_evidence_manifest.v1",
+  "screenshots": [
+    {
+      "authenticated_marker": false,
+      "height": 900,
+      "no_horizontal_overflow": true,
+      "path": "design-evidence/public-desktop.png",
+      "public_marker": true,
+      "sha256": "4bd893c6f54336b2250a6df83ddaebe8cfa3239bf5239d1585fe8c3bc2cfb407",
+      "surface": "public",
+      "viewport": "desktop",
+      "width": 1440
+    },
+    {
+      "authenticated_marker": false,
+      "height": 844,
+      "no_horizontal_overflow": true,
+      "path": "design-evidence/public-mobile.png",
+      "public_marker": true,
+      "sha256": "355c61c022b43c2867c8974b59c3deb4a68b943820fa21f61b357394e1e54d07",
+      "surface": "public",
+      "viewport": "mobile",
+      "width": 390
+    },
+    {
+      "authenticated_marker": true,
+      "height": 900,
+      "no_horizontal_overflow": true,
+      "path": "design-evidence/authenticated-desktop.png",
+      "public_marker": false,
+      "sha256": "55fc5f84e075b71e1b19c30f68cc60dbf0fc6fdfe8cd1b8c98b43bec2823f7bd",
+      "sign_out_control": {"label": "Sign out", "width": 122.8125, "height": 44, "foreground": "rgb(255, 250, 240)", "background": "rgb(59, 57, 50)"},
+      "surface": "authenticated",
+      "verified_modes": ["Request", "Evidence", "Decision"],
+      "viewport": "desktop",
+      "width": 1440
+    },
+    {
+      "authenticated_marker": true,
+      "height": 844,
+      "no_horizontal_overflow": true,
+      "path": "design-evidence/authenticated-mobile.png",
+      "public_marker": false,
+      "sha256": "00aa6f11a4e2875da1b50defaf7e2cf9187129ae7284c01df6a7891609b80a49",
+      "sign_out_control": {"label": "Sign out", "width": 97.609375, "height": 44, "font_size": "12px", "foreground": "rgb(255, 250, 240)", "background": "rgb(59, 57, 50)"},
+      "surface": "authenticated",
+      "verified_modes": ["Request", "Evidence", "Decision"],
+      "viewport": "mobile",
+      "width": 390
+    }
+  ]
+}

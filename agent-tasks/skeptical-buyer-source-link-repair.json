@@ -1,0 +1,39 @@
+{
+  "context": {
+    "organic_discovery_ref": "organic-discovery.json",
+    "review_ref": "skeptical-buyer-review.json",
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "product_experience_implementation_agent",
+    "allowed_scope": [
+      "frontend/src/components/MarketingPage.jsx",
+      "frontend/test/app-smoke.test.js",
+      "organic-discovery.json",
+      "skeptical-buyer-review.json"
+    ],
+    "definition_of_done": [
+      "Render QuoteRivet product scope as a buyer-readable non-link label explicitly marked as internal product scope.",
+      "Render Jobber Request Basics as an anchor whose href exactly matches its retained source_ref in organic-discovery.json.",
+      "Render Google Local Services lead documentation as an anchor whose href exactly matches its retained source_ref in organic-discovery.json.",
+      "Use safe external-link attributes and preserve the existing proof_ref-driven page selection.",
+      "Add focused regression assertions for the readable labels, retained URLs, anchors, and absence of raw source IDs in rendered footer copy.",
+      "Do not edit organic-discovery.json or skeptical-buyer-review.json.",
+      "npm test passes."
+    ],
+    "dependencies": [
+      "skeptical_buyer_review_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_scope": [
+      "strategy, review, authorization, persistence, or command behavior",
+      "invented URLs or evidence",
+      "raw secret persistence"
+    ],
+    "objective": "Repair the two blocking skeptical-buyer proof-label issues by linking buyer-readable source names to their retained evidence URLs.",
+    "task_id": "repair-quote-intake-demo-skeptical-buyer-source-links",
+    "title": "Link QuoteRivet buyer-readable proof sources",
+    "verification_command": "npm test"
+  }
+}

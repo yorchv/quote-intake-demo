@@ -1,0 +1,213 @@
+{
+  "context": {
+    "acceptance_ref": "tests/experience-acceptance.json",
+    "agent_interface_ref": "agent-interface.json",
+    "blueprint_ref": "experience-blueprint.json",
+    "blueprint_sha256": "71a9c1235635bbd2808e874643a79041af725bfc3b682ae1ef4541dd1f8c7e0b",
+    "design_contract": {
+      "anti_template_constraints": [
+        "Do not use a KPI strip, chart wall, generic card grid, or sidebar-first dashboard as the primary authenticated experience.",
+        "Do not split one request into unrelated tabs that hide the source request while evidence, assignment, visit, or readiness work is active.",
+        "Do not present status as decoration. Pair every state with the accountable actor, retained evidence, and next permitted command.",
+        "Do not use placeholder copy, dead actions, unlabeled icons, fake activity, invented response-time promises, or unverified outcome claims.",
+        "Do not expose command ids, schema versions, factory stages, build metadata, provider configuration, raw policy expressions, or secrets in customer screens.",
+        "Do not color-code readiness without a text label, checklist result, decision-maker, time, and evidence references.",
+        "Do not imply that quote-ready means a quote was issued, accepted, won, or paid."
+      ],
+      "composition": {
+        "authenticated_workspace": "A quiet workbench built around one vertical request spine. The source request stays in the center, retained evidence clips to the left rail, accountable decisions stitch down the right seam, and one permission-aware next move rests at the bottom. Queue views use compact rows that open directly into this dossier rather than a dashboard of detached cards.",
+        "public_entry": "An anonymous estimate-request sheet explains what the company needs, why each detail helps, what will happen after submission, and that a human will review the request. It keeps company operations, staff notes, and readiness controls out of the public experience."
+      },
+      "design_contract_version": "product_factory.distinctive_product_design.v1",
+      "experience_thesis": "QuoteRivet should feel like assembling one trustworthy job file, not monitoring a sales dashboard. The source request forms a fixed spine. Evidence, field facts, accountable decisions, and handoff receipts attach to that spine in order, so anyone can see what changed, who decided, what still blocks progress, and the one permitted next move.",
+      "interaction_metaphor": "A riveted request dossier with a fixed spine, clipped evidence rail, stitched decision seam, and a single next-move dock.",
+      "signature_interactions": [
+        {
+          "description": "Opening any queue item anchors the source request in the center while assignment, evidence, field facts, readiness, and handoff attach around it. Switching work modes never replaces the active request with a generic dashboard.",
+          "interaction_id": "follow_the_request_spine",
+          "name": "Follow the request spine",
+          "route_refs": [
+            "request_dossier",
+            "site_visit_workbench",
+            "readiness_seam",
+            "handoff_dock"
+          ]
+        },
+        {
+          "description": "Selecting a readiness criterion reveals only the exact current evidence versions that support it. A result cannot be recorded until the reviewer addresses missing, disputed, restricted, or stale evidence.",
+          "interaction_id": "stitch_evidence_to_decision",
+          "name": "Stitch evidence to a decision",
+          "route_refs": [
+            "readiness_seam"
+          ]
+        },
+        {
+          "description": "The bottom dock presents one command allowed by current state, permission, policy, and revision. It explains blocked guards in customer language and sends authority questions to the named human role.",
+          "interaction_id": "one_guarded_next_move",
+          "name": "One guarded next move",
+          "route_refs": [
+            "requester_intake",
+            "intake_queue",
+            "request_dossier",
+            "assignment_board",
+            "site_visit_workbench",
+            "readiness_seam",
+            "handoff_dock",
+            "exception_ledger"
+          ]
+        },
+        {
+          "description": "The handoff compacts the current readiness decision, evidence refs, limitations, recipient access, and open obligations into an immutable receipt. Later changes visibly invalidate the seal without erasing transfer or acknowledgement history.",
+          "interaction_id": "seal_and_receive_handoff",
+          "name": "Seal and receive the handoff",
+          "route_refs": [
+            "handoff_dock"
+          ]
+        }
+      ],
+      "visual_language": {
+        "color_system": "Use warm paper and graphite neutrals for the dossier, oxidized copper for the active stitch and focus ring, field blue for links and neutral progress, amber for unresolved checks, and brick red for stopped work. Every color has a text label and icon. Meet WCAG AA contrast in all states and never use color alone to signal readiness.",
+        "data_visualization": "Use a thin chronological stitch for attributable events, compact checklist rows for evidence coverage, and queue aging as labeled elapsed time. Do not add charts without retained source data, a decision they support, and an accessible table equivalent.",
+        "shape_language": "A strong vertical spine, offset clipped rails, narrow stitched connectors, square evidence thumbnails, and a rounded bottom command dock. Use borders and spacing to show attachment and version lineage. Avoid a uniform field of floating rounded cards.",
+        "typography": "Use a sturdy humanist sans for instructions and controls, tabular numerals for times and versions, and a restrained slab or serif accent only for request identifiers and section folios. Preserve 16px body text, 1.5 line height, visible focus, 44px touch targets, and readable layout at 200 percent zoom."
+      }
+    },
+    "design_review_feedback_ref": "design-readiness-review.json",
+    "customer_clarity_review_ref": "customer-clarity-review.json",
+    "skeptical_buyer_review_ref": "skeptical-buyer-review.json",
+    "organic_discovery_ref": "organic-discovery.json",
+    "product_id": "quote-intake-demo",
+    "usability_contract": {
+      "anti_bloat_rules": [
+        "Show one request and one primary next move at a time.",
+        "Keep history collapsed until the user asks for prior versions or decisions.",
+        "Put advanced policy, retention, archive, restore, restriction, and invalidation controls behind a named More actions disclosure.",
+        "Use queue rows for comparison and the dossier for action. Do not duplicate full forms inside cards.",
+        "Never display implementation metadata as a customer-facing panel."
+      ],
+      "context_preservation": {
+        "desktop_strategy": "sticky_adjacent",
+        "mobile_strategy": "edit_preview_toggle",
+        "primary_object_visible_during_modes": true
+      },
+      "interaction_model": "focused_modes",
+      "primary_action_limit": 1,
+      "primary_modes": [
+        {
+          "default": true,
+          "label": "Request",
+          "mode_id": "request",
+          "panel_refs": [
+            "request_spine_panel"
+          ],
+          "purpose": "Review or correct the source request while its identity and current state stay visible."
+        },
+        {
+          "default": false,
+          "label": "Evidence",
+          "mode_id": "evidence",
+          "panel_refs": [
+            "evidence_rail_panel"
+          ],
+          "purpose": "Capture or review evidence and site facts without losing the active request."
+        },
+        {
+          "default": false,
+          "label": "Decision",
+          "mode_id": "decision",
+          "panel_refs": [
+            "decision_seam_panel",
+            "next_move_dock_panel"
+          ],
+          "purpose": "Review the current decision trail and execute one guarded next command."
+        }
+      ],
+      "progressive_disclosure": {
+        "advanced_controls": [
+          "archive or restore",
+          "restrict or restore access",
+          "invalidate a prior decision or handoff",
+          "open full version history",
+          "inspect policy attribution"
+        ],
+        "advanced_group_label": "More actions",
+        "always_visible": [
+          "request identity and current state",
+          "accountable person",
+          "missing or blocked facts",
+          "current evidence summary",
+          "one primary next move"
+        ]
+      },
+      "save_behavior": {
+        "drafts": "automatic",
+        "high_risk_actions": "explicit_confirmation",
+        "status_feedback": "Show Saving beside the edited section, then Saved with the latest revision. A command result must name the new state and accountable next step. A stale revision keeps the user's draft and asks them to review the changed facts before retrying."
+      }
+    },
+    "working_directory_ref": "artifacts/build_quote_intake_demo_2ef739047aad/hosted-app"
+  },
+  "schema_version": "product_factory.agent_task.v1",
+  "task": {
+    "agent_id": "product_experience_implementation_agent",
+    "allowed_scope": [
+      "frontend/src/**",
+      "frontend/test/**",
+      "backend/product_adapters/**",
+      "tests/**",
+      "customer-clarity-review.json",
+      "skeptical-buyer-review.json",
+      "organic-discovery.json",
+      "experience-implementation.json"
+    ],
+    "definition_of_done": [
+      "The public entry implements the declared public composition, uses data-product-public-entry, and contains no generic pilot or factory-shell language.",
+      "First use states the customer promise, starting action, and success confirmation from the language system without exposing architecture or workflow jargon.",
+      "Navigation, headings, orientation, actions, and state messages use the finished customer_copy declared for each route.",
+      "agent-interface.json lets an agent discover route intent, required context, exact commands, success evidence, stop conditions, escalation boundaries, and handoff fields without screen scraping.",
+      "Implement the declared focused modes without rendering every panel or command at once.",
+      "Keep the declared primary object visible through the desktop context strategy and the mobile context strategy.",
+      "Expose no more than the declared primary action limit in each mode and hide advanced controls behind the named disclosure.",
+      "Preserve truthful save feedback and require explicit confirmation for high-risk actions.",
+      "Every blueprint panel has a product-specific component and a stable data-experience-panel marker.",
+      "Every visible mutation calls its immutable command_ref or a declared product adapter endpoint; labels never determine behavior.",
+      "The first viewport exposes the primary evidence or decision object instead of generic KPI cards.",
+      "The primary browser journey runs end to end with persisted evidence, permission denial, error, blocked, and completed states.",
+      "experience-implementation.json is complete and scripts/verify-experience.py passes.",
+      "When an independent public-copy review is verified and rejected, repair every exact blocking phrase in product source without editing the review artifact."
+    ],
+    "dependencies": [
+      "architecture_verifier_agent"
+    ],
+    "execution_sandbox": "workspace-write",
+    "forbidden_fallbacks": [
+      "generic admin dashboard",
+      "unbound action button",
+      "placeholder route or copy",
+      "raw JSON inspector",
+      "factory metadata page",
+      "color-only workflow state",
+      "invented analytics or sample customer activity"
+    ],
+    "forbidden_scope": [
+      "executable-product.json",
+      "experience-blueprint.json",
+      "backend generated authorization and command guards"
+    ],
+    "objective": "Open one incoming estimate request, complete its minimum facts, and record the accountable next step without losing its source or requester-visible history.",
+    "required_component_files": [
+      "components/quote-rivet/request-spine.tsx",
+      "components/quote-rivet/evidence-rail.tsx",
+      "components/quote-rivet/decision-seam.tsx",
+      "components/quote-rivet/next-move-dock.tsx",
+      "components/quote-rivet/request-queue-row.tsx",
+      "components/quote-rivet/site-capture-sheet.tsx",
+      "components/quote-rivet/readiness-stitch.tsx",
+      "components/quote-rivet/handoff-receipt.tsx",
+      "components/quote-rivet/route-state-panel.tsx"
+    ],
+    "task_id": "implement-quote-intake-demo-experience",
+    "title": "Implement the executable QuoteRivet experience",
+    "verification_command": "python3 scripts/verify-experience.py"
+  }
+}

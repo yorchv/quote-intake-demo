@@ -1,0 +1,42 @@
+{
+  "build_id": "build_quote_intake_demo_2ef739047aad",
+  "diagnostic_metrics": [
+    "public-page visitor to qualified estimate-request start rate by intent cluster",
+    "qualified estimate-request completion rate",
+    "median time from first request capture to first human response",
+    "share of accepted requests missing required site details, photos, or scope notes",
+    "share of site visits assigned with an accountable estimator"
+  ],
+  "evidence_sources": [
+    "consented product analytics events",
+    "product request, site-visit, and quote-ready records",
+    "attributed quote and won-work records from an operator-approved integration or manual reconciliation",
+    "Google Search Console and Bing Webmaster Tools after ownership is verified",
+    "crawler and server logs that exclude secrets and private content"
+  ],
+  "experiment_policy": {
+    "automatic_publish": false,
+    "new_page_requires_distinct_unmet_intent": true,
+    "output": "reviewable source change with hypothesis and evidence",
+    "traffic_alone_is_not_validation": true
+  },
+  "forbidden_actions": [
+    "fabricate backlinks, reviews, citations, mentions, customers, or outcomes",
+    "publish without source review",
+    "mass-generate query permutations",
+    "expose private query or customer data"
+  ],
+  "outcome_metrics": [
+    "qualified estimate requests created",
+    "quote-ready packages completed",
+    "median time from qualified request to quote-ready decision",
+    "quotes issued from quote-ready packages",
+    "won work attributable to a completed quote-ready package"
+  ],
+  "primary_conversion_event": "A prospective buyer submits a qualified estimate request with contact details, service location, requested work, and consent to follow up.",
+  "product_id": "quote-intake-demo",
+  "review_cadence": "Review diagnostic metrics weekly after launch and commercial outcomes monthly only when identity, consent, and attribution are available.",
+  "schema_version": "product_factory.organic_growth_plan.v1",
+  "source_contract_ref": "organic-discovery.json",
+  "status": "awaiting_live_data"
+}
